@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-admin/jiangfendou-mall-admin.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-admin/jiangfendou-mall-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jiangfendou-mall-backend.iml" filepath="$PROJECT_DIR$/.idea/jiangfendou-mall-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-common/jiangfendou-mall-common.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-common/jiangfendou-mall-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-coupon/jiangfendou-mall-coupon.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-coupon/jiangfendou-mall-coupon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-generator/jiangfendou-mall-generator.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-generator/jiangfendou-mall-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-member/jiangfendou-mall-member.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-member/jiangfendou-mall-member.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-order/jiangfendou-mall-order.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-order/jiangfendou-mall-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-product/jiangfendou-mall-product.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-product/jiangfendou-mall-product.iml" />

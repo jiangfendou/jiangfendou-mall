@@ -9,24 +9,24 @@
         <module name="jiangfendou-mall-order" />
         <module name="jiangfendou-mall-coupon" />
         <module name="jiangfendou-mall-product" />
+        <module name="jiangfendou-mall-generator" />
+        <module name="jiangfendou-mall-member" />
+        <module name="jiangfendou-mall-common" />
         <module name="jiangfendou-mall-ware" />
         <module name="jiangfendou-mall-admin" />
-      </profile>
-      <profile name="Annotation profile for jiangfendou-mall" enabled="true">
-        <sourceOutputDir name="../jiangfendou-mall-ware/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../jiangfendou-mall-ware/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="jiangfendou-mall-member" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jiangfendou-mall-admin" target="1.8" />
       <module name="jiangfendou-mall-backend" target="1.5" />
+      <module name="jiangfendou-mall-common" target="11" />
       <module name="jiangfendou-mall-coupon" target="11" />
+      <module name="jiangfendou-mall-generator" target="1.8" />
       <module name="jiangfendou-mall-member" target="11" />
       <module name="jiangfendou-mall-order" target="11" />
       <module name="jiangfendou-mall-product" target="11" />
       <module name="jiangfendou-mall-ware" target="11" />
+      <module name="renren-generator" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -34,10 +34,12 @@
       <module name="jiangfendou-mall-admin" options="-parameters" />
       <module name="jiangfendou-mall-backend" options="-parameters" />
       <module name="jiangfendou-mall-coupon" options="-parameters" />
+      <module name="jiangfendou-mall-generator" options="-parameters" />
       <module name="jiangfendou-mall-member" options="-parameters" />
       <module name="jiangfendou-mall-order" options="-parameters" />
       <module name="jiangfendou-mall-product" options="-parameters" />
       <module name="jiangfendou-mall-ware" options="-parameters" />
+      <module name="renren-generator" options="-parameters" />
     </option>
   </component>
 </project>

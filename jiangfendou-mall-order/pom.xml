@@ -8,7 +8,7 @@
         <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.jiangfendou-mall</groupId>
+    <groupId>com.jiangfendou.mall</groupId>
     <artifactId>jiangfendou-mall-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jiangfendou-mall-order</name>
