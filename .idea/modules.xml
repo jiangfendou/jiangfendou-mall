@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-admin/jiangfendou-mall-admin.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-admin/jiangfendou-mall-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jiangfendou-mall-backend.iml" filepath="$PROJECT_DIR$/.idea/jiangfendou-mall-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-coupon/jiangfendou-mall-coupon.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-coupon/jiangfendou-mall-coupon.iml" />
       <module fileurl="file://$PROJECT_DIR$/jiangfendou-mall-member/jiangfendou-mall-member.iml" filepath="$PROJECT_DIR$/jiangfendou-mall-member/jiangfendou-mall-member.iml" />
