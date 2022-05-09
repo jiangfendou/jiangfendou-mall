@@ -19,8 +19,8 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<SkuInfoEntity> page = this.page(
-                new Query<SkuInfoEntity>().getPage(params),
-                new QueryWrapper<SkuInfoEntity>()
+            new Query<SkuInfoEntity>().getPage(params),
+            new QueryWrapper<SkuInfoEntity>()
         );
 
         return new PageUtils(page);

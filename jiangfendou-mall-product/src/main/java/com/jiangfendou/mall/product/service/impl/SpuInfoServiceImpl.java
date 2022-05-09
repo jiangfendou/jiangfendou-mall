@@ -19,8 +19,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<SpuInfoEntity> page = this.page(
-                new Query<SpuInfoEntity>().getPage(params),
-                new QueryWrapper<SpuInfoEntity>()
+            new Query<SpuInfoEntity>().getPage(params),
+            new QueryWrapper<SpuInfoEntity>()
         );
 
         return new PageUtils(page);

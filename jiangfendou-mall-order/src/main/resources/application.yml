@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    #MySQL配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: password
+  # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
+  mvc:
+    servlet:
+      load-on-startup: 1
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*/xml
+  #主键自增
+  global-config:
+    db-config:
+      id-type: auto

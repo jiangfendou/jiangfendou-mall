@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 品牌分类关联
- * 
+ *
  * @author jiangfendou
  * @email 49323245@qq.com
  * @date 2022-05-08 20:27:20
@@ -17,28 +17,28 @@ import lombok.Data;
 @Data
 @TableName("pms_category_brand_relation")
 public class CategoryBrandRelationEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	@TableId
-	private Long id;
-	/**
-	 * 品牌id
-	 */
-	private Long brandId;
-	/**
-	 * 分类id
-	 */
-	private Long catelogId;
-	/**
-	 * 
-	 */
-	private String brandName;
-	/**
-	 * 
-	 */
-	private String catelogName;
+    /**
+     *
+     */
+    @TableId
+    private Long id;
+    /**
+     * 品牌id
+     */
+    private Long brandId;
+    /**
+     * 分类id
+     */
+    private Long catelogId;
+    /**
+     *
+     */
+    private String brandName;
+    /**
+     *
+     */
+    private String catelogName;
 
 }

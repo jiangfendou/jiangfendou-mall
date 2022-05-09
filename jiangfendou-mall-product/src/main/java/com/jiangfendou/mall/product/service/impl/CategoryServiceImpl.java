@@ -19,8 +19,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<CategoryEntity> page = this.page(
-                new Query<CategoryEntity>().getPage(params),
-                new QueryWrapper<CategoryEntity>()
+            new Query<CategoryEntity>().getPage(params),
+            new QueryWrapper<CategoryEntity>()
         );
 
         return new PageUtils(page);

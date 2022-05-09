@@ -14,13 +14,14 @@ import com.jiangfendou.mall.product.service.SkuSaleAttrValueService;
 
 
 @Service("skuSaleAttrValueService")
-public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {
+public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity>
+    implements SkuSaleAttrValueService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<SkuSaleAttrValueEntity> page = this.page(
-                new Query<SkuSaleAttrValueEntity>().getPage(params),
-                new QueryWrapper<SkuSaleAttrValueEntity>()
+            new Query<SkuSaleAttrValueEntity>().getPage(params),
+            new QueryWrapper<SkuSaleAttrValueEntity>()
         );
 
         return new PageUtils(page);

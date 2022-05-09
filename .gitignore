@@ -31,7 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
-
-**/target/
-.idea
-**/.gitignore
+src/test/java/com/jiangfendou/mall/jiangfendoumallware/JiangfendouMallWareApplicationTests.java
+src/main/resources/application.properties
+src/main/java/com/jiangfendou/mall/jiangfendoumallware/JiangfendouMallWareApplication.java
+mvnw.cmd
+mvnw
+jiangfendou-mall-generator/.gitignore
+jiangfendou-mall-admin/.gitignore
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.jar

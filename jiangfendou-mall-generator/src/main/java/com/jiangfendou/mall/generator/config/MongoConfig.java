@@ -37,7 +37,7 @@ public class MongoConfig {
         adds.add(serverAddress);
         if (this.auth) {
             MongoCredential mongoCredential = MongoCredential.
-                    createScramSha1Credential(this.username, this.source, this.password.toCharArray());
+                createScramSha1Credential(this.username, this.source, this.password.toCharArray());
             MongoClientOptions mongoClientOptions = MongoClientOptions.builder().build();
             return new MongoClient(adds, mongoCredential, mongoClientOptions);
         }
@@ -49,7 +49,6 @@ public class MongoConfig {
     public MongoDatabase getDataBase() {
         return getMongoClient().getDatabase(dataBase);
     }
-
 
 
     public MongoConfig setHost(String host) {

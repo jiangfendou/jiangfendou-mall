@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 /**
  * 商品评价
  *
@@ -32,7 +31,7 @@ public class SpuCommentController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = spuCommentService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -43,8 +42,8 @@ public class SpuCommentController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id){
-		SpuCommentEntity spuComment = spuCommentService.getById(id);
+    public R info(@PathVariable("id") Long id) {
+        SpuCommentEntity spuComment = spuCommentService.getById(id);
 
         return R.ok().put("spuComment", spuComment);
     }
@@ -53,8 +52,8 @@ public class SpuCommentController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SpuCommentEntity spuComment){
-		spuCommentService.save(spuComment);
+    public R save(@RequestBody SpuCommentEntity spuComment) {
+        spuCommentService.save(spuComment);
 
         return R.ok();
     }
@@ -63,8 +62,8 @@ public class SpuCommentController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody SpuCommentEntity spuComment){
-		spuCommentService.updateById(spuComment);
+    public R update(@RequestBody SpuCommentEntity spuComment) {
+        spuCommentService.updateById(spuComment);
 
         return R.ok();
     }
@@ -73,8 +72,8 @@ public class SpuCommentController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] ids){
-		spuCommentService.removeByIds(Arrays.asList(ids));
+    public R delete(@RequestBody Long[] ids) {
+        spuCommentService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

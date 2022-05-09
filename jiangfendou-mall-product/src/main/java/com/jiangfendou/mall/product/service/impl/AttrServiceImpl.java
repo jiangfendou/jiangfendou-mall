@@ -19,8 +19,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<AttrEntity> page = this.page(
-                new Query<AttrEntity>().getPage(params),
-                new QueryWrapper<AttrEntity>()
+            new Query<AttrEntity>().getPage(params),
+            new QueryWrapper<AttrEntity>()
         );
 
         return new PageUtils(page);

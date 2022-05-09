@@ -19,8 +19,8 @@ public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesDao, SpuImagesEnt
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<SpuImagesEntity> page = this.page(
-                new Query<SpuImagesEntity>().getPage(params),
-                new QueryWrapper<SpuImagesEntity>()
+            new Query<SpuImagesEntity>().getPage(params),
+            new QueryWrapper<SpuImagesEntity>()
         );
 
         return new PageUtils(page);

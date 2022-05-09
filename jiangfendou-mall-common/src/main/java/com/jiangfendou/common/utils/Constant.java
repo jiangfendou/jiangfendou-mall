@@ -8,9 +8,9 @@
 
 package com.jiangfendou.common.utils;
 
-import com.jiangfendou.mall.admin.common.validator.group.AliyunGroup;
-import com.jiangfendou.mall.admin.common.validator.group.QcloudGroup;
-import com.jiangfendou.mall.admin.common.validator.group.QiniuGroup;
+import com.jiangfendou.common.validator.group.AliyunGroup;
+import com.jiangfendou.common.validator.group.QcloudGroup;
+import com.jiangfendou.common.validator.group.QiniuGroup;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -140,7 +140,8 @@ public class Constant {
         }
 
         public static CloudService getByValue(Integer value) {
-            Optional<CloudService> first = Stream.of(CloudService.values()).filter(cs -> value.equals(cs.value)).findFirst();
+            Optional<CloudService> first =
+                Stream.of(CloudService.values()).filter(cs -> value.equals(cs.value)).findFirst();
             if (!first.isPresent()) {
                 throw new IllegalArgumentException("非法的枚举值:" + value);
             }

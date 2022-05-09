@@ -7,7 +7,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-ums?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: password
     #oracle配置
@@ -33,7 +33,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   #    static-locations: classpath:/static/,classpath:/views/
   main:
-      allow-circular-references: true
+    allow-circular-references: true
   web:
     resources:
       static-locations: classpath:/static/,classpath:/views/

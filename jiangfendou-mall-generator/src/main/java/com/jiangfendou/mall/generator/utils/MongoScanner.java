@@ -73,7 +73,8 @@ public class MongoScanner {
         skip = skip == null ? 0 : skip;
         limit = limit == null ? scanCount : limit;
         MongoCollection<Document> collection = this.collection;
-        BasicDBObject $project = new BasicDBObject("$project", new BasicDBObject("arrayofkeyvalue", new BasicDBObject("$objectToArray", "$$ROOT")));
+        BasicDBObject $project = new BasicDBObject("$project",
+            new BasicDBObject("arrayofkeyvalue", new BasicDBObject("$objectToArray", "$$ROOT")));
         BasicDBObject $unwind = new BasicDBObject("$unwind", "$arrayofkeyvalue");
         BasicDBObject $skip = new BasicDBObject("$skip", skip);
         BasicDBObject $limit = new BasicDBObject("$limit", limit);
@@ -120,7 +121,8 @@ public class MongoScanner {
         Document limit = new Document("$limit", 3000);
         Document project = new Document("$project", new Document("list", "$" + parameterName).append("_id", false));
         Document unwind2 = new Document("$unwind", "$list");
-        AggregateIterable<Document> aggregate = this.collection.aggregate(Arrays.asList(match, unwind, limit, project, unwind2));
+        AggregateIterable<Document> aggregate =
+            this.collection.aggregate(Arrays.asList(match, unwind, limit, project, unwind2));
         Set<String> names = new HashSet<>();
         for (Document document : aggregate) {
             Object list = document.get("list");
@@ -152,11 +154,13 @@ public class MongoScanner {
             return result;
         }
         result.setPropertyName(propertyName);
-        MongoCursor<Document> isArray = collection.find(new Document(propertyName, new Document("$type", ARRAY_TYPE))).limit(1).iterator();
+        MongoCursor<Document> isArray =
+            collection.find(new Document(propertyName, new Document("$type", ARRAY_TYPE))).limit(1).iterator();
         if (isArray.hasNext()) {
             result.setArray(true);
             for (int i : TYPE) {
-                MongoCursor<Document> iterator = collection.find(new Document(propertyName, new Document("$type", i))).limit(1).iterator();
+                MongoCursor<Document> iterator =
+                    collection.find(new Document(propertyName, new Document("$type", i))).limit(1).iterator();
                 if (iterator.hasNext()) {
                     if (i == 3) {
                         result.setChild(this.produceChildList(propertyName));
@@ -169,7 +173,8 @@ public class MongoScanner {
             }
         } else {
             for (int i : TYPE) {
-                MongoCursor<Document> iterator = collection.find(new Document(propertyName, new Document("$type", i))).limit(1).iterator();
+                MongoCursor<Document> iterator =
+                    collection.find(new Document(propertyName, new Document("$type", i))).limit(1).iterator();
                 if (iterator.hasNext()) {
                     if (i == 3) {
                         result.setChild(this.produceChildList(propertyName));
@@ -220,7 +225,7 @@ public class MongoScanner {
         }
         this.colNames = pool.invoke(task);
         logger.info("collection[" + this.collection.getNamespace().getCollectionName() +
-                "]初始化列名成功.....     用时: " + (System.currentTimeMillis() - start) + "毫秒");
+            "]初始化列名成功.....     用时: " + (System.currentTimeMillis() - start) + "毫秒");
     }
 
     private MongoDefinition scanType() {
@@ -294,7 +299,8 @@ public class MongoScanner {
             }
         }
     }
-    public  <T> List<T> mergeList(List<T> list1, List<T> list2){
+
+    public <T> List<T> mergeList(List<T> list1, List<T> list2) {
         list1.addAll(list2);
         return list1;
     }

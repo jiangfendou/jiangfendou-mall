@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 /**
  * spu信息介绍
  *
@@ -32,7 +31,7 @@ public class SpuInfoDescController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = spuInfoDescService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -43,8 +42,8 @@ public class SpuInfoDescController {
      * 信息
      */
     @RequestMapping("/info/{spuId}")
-    public R info(@PathVariable("spuId") Long spuId){
-		SpuInfoDescEntity spuInfoDesc = spuInfoDescService.getById(spuId);
+    public R info(@PathVariable("spuId") Long spuId) {
+        SpuInfoDescEntity spuInfoDesc = spuInfoDescService.getById(spuId);
 
         return R.ok().put("spuInfoDesc", spuInfoDesc);
     }
@@ -53,8 +52,8 @@ public class SpuInfoDescController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SpuInfoDescEntity spuInfoDesc){
-		spuInfoDescService.save(spuInfoDesc);
+    public R save(@RequestBody SpuInfoDescEntity spuInfoDesc) {
+        spuInfoDescService.save(spuInfoDesc);
 
         return R.ok();
     }
@@ -63,8 +62,8 @@ public class SpuInfoDescController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody SpuInfoDescEntity spuInfoDesc){
-		spuInfoDescService.updateById(spuInfoDesc);
+    public R update(@RequestBody SpuInfoDescEntity spuInfoDesc) {
+        spuInfoDescService.updateById(spuInfoDesc);
 
         return R.ok();
     }
@@ -73,8 +72,8 @@ public class SpuInfoDescController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] spuIds){
-		spuInfoDescService.removeByIds(Arrays.asList(spuIds));
+    public R delete(@RequestBody Long[] spuIds) {
+        spuInfoDescService.removeByIds(Arrays.asList(spuIds));
 
         return R.ok();
     }

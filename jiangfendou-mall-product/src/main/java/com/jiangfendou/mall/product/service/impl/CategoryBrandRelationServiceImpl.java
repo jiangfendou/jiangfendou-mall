@@ -14,13 +14,14 @@ import com.jiangfendou.mall.product.service.CategoryBrandRelationService;
 
 
 @Service("categoryBrandRelationService")
-public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {
+public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity>
+    implements CategoryBrandRelationService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<CategoryBrandRelationEntity> page = this.page(
-                new Query<CategoryBrandRelationEntity>().getPage(params),
-                new QueryWrapper<CategoryBrandRelationEntity>()
+            new Query<CategoryBrandRelationEntity>().getPage(params),
+            new QueryWrapper<CategoryBrandRelationEntity>()
         );
 
         return new PageUtils(page);

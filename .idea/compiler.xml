@@ -12,8 +12,8 @@
         <module name="jiangfendou-mall-generator" />
         <module name="jiangfendou-mall-member" />
         <module name="jiangfendou-mall-common" />
-        <module name="jiangfendou-mall-ware" />
         <module name="jiangfendou-mall-admin" />
+        <module name="jiangfendou-mall-ware" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

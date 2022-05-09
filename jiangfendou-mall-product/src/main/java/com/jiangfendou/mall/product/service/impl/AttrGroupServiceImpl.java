@@ -19,8 +19,8 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<AttrGroupEntity> page = this.page(
-                new Query<AttrGroupEntity>().getPage(params),
-                new QueryWrapper<AttrGroupEntity>()
+            new Query<AttrGroupEntity>().getPage(params),
+            new QueryWrapper<AttrGroupEntity>()
         );
 
         return new PageUtils(page);
