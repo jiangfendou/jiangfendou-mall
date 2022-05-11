@@ -1,3 +1,6 @@
+server:
+  port: 8001
+
 spring:
   datasource:
     # MySQL配置
@@ -5,6 +8,13 @@ spring:
     url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: password
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.223.77.220
+  application:
+    name: jiangfendou-mall-coupon
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
   mvc:
     servlet:
@@ -15,3 +25,5 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+
+
