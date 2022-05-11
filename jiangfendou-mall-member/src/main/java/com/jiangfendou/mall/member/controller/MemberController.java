@@ -1,5 +1,6 @@
 package com.jiangfendou.mall.member.controller;
 
+import com.jiangfendou.mall.member.feign.CouponFeignService;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -26,8 +27,20 @@ import com.jiangfendou.common.utils.R;
 @RestController
 @RequestMapping("member/member")
 public class MemberController {
+
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    @RequestMapping("/coupons")
+    public R test() {
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setNickname("张sann");
+        R memberCoupons = couponFeignService.memberCoupons();
+        return R.ok().put("member", memberEntity).put("coupons", memberCoupons.get("coupons"));
+    }
 
     /**
      * 列表
