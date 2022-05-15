@@ -18,5 +18,6 @@
         <module>jiangfendou-mall-admin</module>
         <module>jiangfendou-mall-generator</module>
         <module>jiangfendou-mall-common</module>
+        <module>jiangfendou-mall-gateway</module>
     </modules>
 </project>

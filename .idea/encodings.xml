@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/jiangfendou-mall-admin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jiangfendou-mall-coupon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jiangfendou-mall-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jiangfendou-mall-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jiangfendou-mall-generator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jiangfendou-mall-member/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jiangfendou-mall-order/src/main/java" charset="UTF-8" />
