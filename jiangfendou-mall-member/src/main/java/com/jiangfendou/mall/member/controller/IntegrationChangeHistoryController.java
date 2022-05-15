@@ -1,5 +1,6 @@
 package com.jiangfendou.mall.member.controller;
 
+import com.jiangfendou.mall.member.service.IntegrationChangeHistoryService;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jiangfendou.mall.member.entity.IntegrationChangeHistoryEntity;
-import com.jiangfendou.mall.member.service.IntegrationChangeHistoryService;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.common.utils.R;
 

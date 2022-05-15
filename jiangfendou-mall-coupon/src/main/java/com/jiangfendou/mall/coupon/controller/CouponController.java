@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +24,29 @@ import com.jiangfendou.common.utils.R;
  * @author jiangfendou
  * @email 49323245@qq.com
  * @date 2022-05-09 21:17:27
+ *
+ *
+ * `@RefreshScope`
+ * 修改nacos配置中心的时候会自动刷新取得最新的配置信息
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
 
     @Autowired
     private CouponService couponService;
+
+    @Value("${coupon.user.name}")
+    private String userName;
+
+    @Value("${test.user}")
+    private String testUser;
+
+    @RequestMapping("/test")
+    public R test() {
+        return R.ok().put("userName", userName).put("testUser", testUser);
+    }
 
     @RequestMapping("/member/list")
     public R memberCoupons() {

@@ -1,5 +1,8 @@
 package com.jiangfendou.mall.member.service.impl;
 
+import com.jiangfendou.mall.member.dao.MemberLevelDao;
+import com.jiangfendou.mall.member.entity.MemberLevelEntity;
+import com.jiangfendou.mall.member.service.MemberLevelService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -7,10 +10,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.common.utils.Query;
-
-import com.jiangfendou.mall.member.dao.MemberLevelDao;
-import com.jiangfendou.mall.member.entity.MemberLevelEntity;
-import com.jiangfendou.mall.member.service.MemberLevelService;
 
 
 @Service("memberLevelService")

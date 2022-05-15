@@ -1,5 +1,7 @@
 package com.jiangfendou.mall.member.service.impl;
 
+import com.jiangfendou.mall.member.dao.GrowthChangeHistoryDao;
+import com.jiangfendou.mall.member.service.GrowthChangeHistoryService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -8,9 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.common.utils.Query;
 
-import com.jiangfendou.mall.member.dao.GrowthChangeHistoryDao;
 import com.jiangfendou.mall.member.entity.GrowthChangeHistoryEntity;
-import com.jiangfendou.mall.member.service.GrowthChangeHistoryService;
 
 
 @Service("growthChangeHistoryService")
