@@ -12,12 +12,14 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
         <mybatisplus.version>3.3.1</mybatisplus.version>
         <mysql.version>8.0.28</mysql.version>
         <mssql.version>4.0</mssql.version>
@@ -40,7 +42,7 @@
         <gson.version>2.8.5</gson.version>
         <fastjson.version>1.2.79</fastjson.version>
         <hutool.version>4.1.1</hutool.version>
-        <lombok.version>1.18.4</lombok.version>
+<!--        <lombok.version>1.18.14</lombok.version>-->
 
         <!--wagon plugin 配置-->
         <service-path>/work/renren</service-path>
@@ -51,6 +53,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jiangfendou.mall</groupId>
+            <artifactId>jiangfendou-mall-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -231,13 +238,23 @@
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.projectlombok</groupId>-->
+<!--            <artifactId>lombok</artifactId>-->
+<!--            <version>1.18.14</version>-->
+<!--        </dependency>-->
     </dependencies>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <finalName>${project.artifactId}</finalName>
         <extensions>
