@@ -27,6 +27,8 @@ spring:
           # 前端项目，/api
           predicates:
             - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
 
   application:
     name: jiangfendou-mall-gateway
