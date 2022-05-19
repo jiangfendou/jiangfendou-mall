@@ -22,6 +22,13 @@ spring:
           uri: https://www.qq.com
           predicates:
             - Query=url,qq
+        - id: product_route
+          uri: lb://jiangfendou-mall-product
+          # 前端项目，/api
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
         - id: admin_route
           uri: lb://jiangfendou-mall-admin
           # 前端项目，/api
@@ -29,7 +36,6 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
-
   application:
     name: jiangfendou-mall-gateway
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
