@@ -19,5 +19,6 @@
         <module>jiangfendou-mall-generator</module>
         <module>jiangfendou-mall-common</module>
         <module>jiangfendou-mall-gateway</module>
+        <module>jiangfendou-mall-third-part</module>
     </modules>
 </project>
