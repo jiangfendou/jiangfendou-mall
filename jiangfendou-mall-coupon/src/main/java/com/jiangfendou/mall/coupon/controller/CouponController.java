@@ -40,12 +40,9 @@ public class CouponController {
     @Value("${coupon.user.name}")
     private String userName;
 
-    @Value("${test.user}")
-    private String testUser;
-
     @RequestMapping("/test")
     public R test() {
-        return R.ok().put("userName", userName).put("testUser", testUser);
+        return R.ok().put("userName", userName);
     }
 
     @RequestMapping("/member/list")

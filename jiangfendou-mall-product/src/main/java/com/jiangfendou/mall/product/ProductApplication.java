@@ -1,5 +1,8 @@
 package com.jiangfendou.mall.product;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +23,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 2、配置Mybatis-Plus
  * 1）、使用@MapperScan
  * 2）、告诉mybatis-plus，sql映射文件的位置
+ *
+ * 2、逻辑删除
+ * 1）、配置全局的逻辑删除规则（省略）
+ * 2）、配置逻辑删除的组件Bean（省略）
+ * 3）、给Bean加上逻辑删除注解@tableLogic
  */
 @EnableDiscoveryClient
 @MapperScan("com.jiangfendou.mall.product.dao")
