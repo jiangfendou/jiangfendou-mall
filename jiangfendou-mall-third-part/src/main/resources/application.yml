@@ -13,11 +13,7 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
-#    alicloud:
-#      access-key: LTAI5t8soJUfN6MDpALdHcmQ
-#      secret-key: 1jIUteCIrfbIRxlt1jhm4R5zlfL0oP
-#      oss:
-#        endpoint: oss-cn-beijing.aliyuncs.com
+
   application:
     name: jiangfendou-mall-third-part
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
