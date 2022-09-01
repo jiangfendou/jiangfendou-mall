@@ -1,9 +1,17 @@
 package com.jiangfendou.mall.product.controller;
 
+import com.jiangfendou.common.valid.AddGroup;
+import com.jiangfendou.common.valid.UpdateGroup;
+import com.jiangfendou.common.valid.UpdateStatusGroup;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,9 +62,8 @@ public class BrandController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody BrandEntity brand) {
+    public R save(@RequestBody @Validated({AddGroup.class}) BrandEntity brand) {
         brandService.save(brand);
-
         return R.ok();
     }
 
@@ -64,8 +71,8 @@ public class BrandController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody BrandEntity brand) {
-        brandService.updateById(brand);
+    public R update(@RequestBody @Validated({UpdateGroup.class}) BrandEntity brand) {
+        brandService.updateBrandInfo(brand);
 
         return R.ok();
     }
@@ -76,6 +83,16 @@ public class BrandController {
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] brandIds) {
         brandService.removeByIds(Arrays.asList(brandIds));
+
+        return R.ok();
+    }
+
+    /**
+     * 修改 status
+     */
+    @RequestMapping("/update/status")
+    public R updateStatus(@RequestBody @Validated({UpdateStatusGroup.class}) BrandEntity brand) {
+        brandService.updateById(brand);
 
         return R.ok();
     }

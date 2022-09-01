@@ -1,9 +1,12 @@
 package com.jiangfendou.mall.product.service.impl;
 
+import com.jiangfendou.mall.product.service.CategoryBrandRelationService;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,11 +18,15 @@ import com.jiangfendou.common.utils.Query;
 import com.jiangfendou.mall.product.dao.CategoryDao;
 import com.jiangfendou.mall.product.entity.CategoryEntity;
 import com.jiangfendou.mall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    private CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -57,6 +64,33 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public void removeMenuByIds(List<Long> asList) {
         // TODO 检查当前删除的菜单，是否被别的地方引用
         baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public Long[] getCateLogPath(Long cateLogId) throws Exception {
+        List<Long> paths = new ArrayList();
+        List<Long> parentPath = getParentPath(cateLogId, paths);
+        Collections.reverse(parentPath);
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateCategoryInfo(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+    }
+
+    private List<Long> getParentPath(Long cateLogId, List<Long> paths) throws Exception {
+        paths.add(cateLogId);
+        CategoryEntity categoryEntity = this.getById(cateLogId);
+        if (categoryEntity == null) {
+            throw new Exception();
+        }
+        if (categoryEntity.getParentCid() != 0) {
+            getParentPath(categoryEntity.getParentCid(), paths);
+        }
+        return paths;
     }
 
     /**
