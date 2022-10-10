@@ -1,7 +1,13 @@
 package com.jiangfendou.mall.product.service.impl;
 
+import com.jiangfendou.mall.product.entity.AttrEntity;
+import com.jiangfendou.mall.product.service.AttrService;
 import com.jiangfendou.mall.product.service.CategoryService;
+import com.jiangfendou.mall.product.vo.AttrGroupWithAttrsVo;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
@@ -25,6 +31,10 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private AttrService attrService;
+
 
     @Override
     public PageUtils queryPage(Map<String, Object> params, Long cateLogId) {
@@ -52,6 +62,23 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         }
         attrGroup.setCatelogPath(categoryService.getCateLogPath(attrGroup.getCatelogId()));
         return attrGroup;
+    }
+
+    @Override
+    public List<AttrGroupWithAttrsVo> getAttrGroupWithAttrs(Long catelogId) {
+        // 查询分组信息
+        List<AttrGroupEntity> attrGroupEntities = this.list(new QueryWrapper<AttrGroupEntity>()
+            .eq("catelog_id", catelogId));
+        // 查询所有属性
+        List<AttrGroupWithAttrsVo> attrGroupWithAttrsVos = attrGroupEntities.stream().map(item -> {
+            AttrGroupWithAttrsVo attrGroupWithAttrsVo = new AttrGroupWithAttrsVo();
+            BeanUtils.copyProperties(item, attrGroupWithAttrsVo);
+            List<AttrEntity> attrs = attrService.getRelationAttr(attrGroupWithAttrsVo.getAttrGroupId());
+            attrGroupWithAttrsVo.setAttrs(attrs);
+            return attrGroupWithAttrsVo;
+        }).collect(Collectors.toList());
+
+        return attrGroupWithAttrsVos;
     }
 
 }

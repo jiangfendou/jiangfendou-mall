@@ -5,6 +5,10 @@ import com.jiangfendou.mall.product.dao.BrandDao;
 import com.jiangfendou.mall.product.dao.CategoryDao;
 import com.jiangfendou.mall.product.entity.BrandEntity;
 import com.jiangfendou.mall.product.entity.CategoryEntity;
+import com.jiangfendou.mall.product.service.BrandService;
+import com.jiangfendou.mall.product.vo.BrandResponseVo;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
@@ -28,6 +32,12 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
 
     @Autowired
     private CategoryDao categoryDao;
+
+    @Autowired
+    private CategoryBrandRelationDao categoryBrandRelationDao;
+
+    @Autowired
+    BrandService brandService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -70,6 +80,18 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
         categoryBrandRelationEntity.setCatelogName(name);
         this.update(categoryBrandRelationEntity,
             new UpdateWrapper<CategoryBrandRelationEntity>().eq("catelog_id", catId));
+    }
+
+    @Override
+    public List<BrandEntity> searchRelationBrandsList(Long catId) {
+        List<CategoryBrandRelationEntity> categoryBrandRelationEntities =
+            categoryBrandRelationDao.selectList(new QueryWrapper<CategoryBrandRelationEntity>()
+                .eq("catelog_id", catId));
+        List<BrandEntity> brandEntities = categoryBrandRelationEntities.stream().map(item -> {
+            BrandEntity brandEntity = brandService.getById(item.getBrandId());
+            return brandEntity;
+        }).collect(Collectors.toList());
+        return brandEntities;
     }
 
 }

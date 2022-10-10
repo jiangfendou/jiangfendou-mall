@@ -1,10 +1,13 @@
 package com.jiangfendou.mall.product.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jiangfendou.mall.product.entity.BrandEntity;
+import com.jiangfendou.mall.product.vo.BrandResponseVo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,4 +87,18 @@ public class CategoryBrandRelationController {
         return R.ok();
     }
 
+    /**
+     * 获取分类下面的所有品牌
+     */
+    @RequestMapping("/brands/list")
+    public R searchRelationBrandsList(@RequestParam(value = "catId", required = true) Long catId ) {
+        List<BrandEntity> brandEntities = categoryBrandRelationService.searchRelationBrandsList(catId);
+        List<BrandResponseVo> collect = brandEntities.stream().map(item -> {
+            BrandResponseVo brandResponseVo = new BrandResponseVo();
+            brandResponseVo.setBrandId(item.getBrandId());
+            brandResponseVo.setBrandName(item.getName());
+            return brandResponseVo;
+        }).collect(Collectors.toList());
+        return R.ok().put("data", collect);
+    }
 }

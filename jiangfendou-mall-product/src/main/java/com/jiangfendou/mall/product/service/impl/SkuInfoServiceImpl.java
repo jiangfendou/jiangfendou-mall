@@ -1,5 +1,7 @@
 package com.jiangfendou.mall.product.service.impl;
 
+import com.jiangfendou.mall.product.entity.SpuInfoEntity;
+import com.jiangfendou.mall.product.vo.SpuSaveVo;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -11,6 +13,7 @@ import com.jiangfendou.common.utils.Query;
 import com.jiangfendou.mall.product.dao.SkuInfoDao;
 import com.jiangfendou.mall.product.entity.SkuInfoEntity;
 import com.jiangfendou.mall.product.service.SkuInfoService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("skuInfoService")
@@ -25,5 +28,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
         return new PageUtils(page);
     }
+
+
 
 }

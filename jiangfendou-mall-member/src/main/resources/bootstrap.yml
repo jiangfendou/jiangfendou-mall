@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: jiangfendou-mall-member
+  cloud:
+    nacos:
+      config:
+        server-addr: 124.223.77.220:8848
+        # 配置文件后缀名为yaml
+        file-extension: yaml
+        namespace: 069355fa-dfec-448c-8a39-422e6e87c444
+        username: nacos
+        password: nacos
+        extension-configs:
+          - dataId: datasource.yml
+            group: dev
+            refresh: true
+          - dataId: system_config.yml
+            group: dev
+            refresh: true
+          - dataId: mybatis.yml
+            group: dev
+            refresh: true

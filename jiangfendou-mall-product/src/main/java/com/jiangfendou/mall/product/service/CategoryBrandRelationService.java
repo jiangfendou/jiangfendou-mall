@@ -2,8 +2,11 @@ package com.jiangfendou.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jiangfendou.common.utils.PageUtils;
+import com.jiangfendou.mall.product.entity.BrandEntity;
 import com.jiangfendou.mall.product.entity.CategoryBrandRelationEntity;
 
+import com.jiangfendou.mall.product.vo.BrandResponseVo;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,5 +25,7 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
     void updateBrandName(Long brandId, String name);
 
     void updateCategory(Long catId, String name);
+
+    List<BrandEntity> searchRelationBrandsList(Long catId);
 }
 

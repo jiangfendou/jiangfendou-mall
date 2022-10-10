@@ -2,7 +2,10 @@ package com.jiangfendou.mall.product.dao;
 
 import com.jiangfendou.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jiangfendou.mall.product.vo.AttrGroupVo;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 属性&属性分组关联
@@ -14,4 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AttrAttrgroupRelationDao extends BaseMapper<AttrAttrgroupRelationEntity> {
 
+    void deleteBatchRelation(@Param("attrGroupVos") List<AttrGroupVo> attrGroupVos);
 }

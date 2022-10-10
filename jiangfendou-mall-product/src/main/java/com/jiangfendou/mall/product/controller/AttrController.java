@@ -1,10 +1,15 @@
 package com.jiangfendou.mall.product.controller;
 
+import com.jiangfendou.mall.product.vo.AttrGroupVo;
+import com.jiangfendou.mall.product.vo.AttrResponseVo;
+import com.jiangfendou.mall.product.vo.AttrVo;
 import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,8 +31,16 @@ import com.jiangfendou.common.utils.R;
 @RestController
 @RequestMapping("product/attr")
 public class AttrController {
+
     @Autowired
     private AttrService attrService;
+
+    @GetMapping(value = "/{attrType}/list/{catelogId}")
+    public R baseAttrList(@RequestParam Map<String, Object> params,
+                          @PathVariable("catelogId") Long catelogId,
+                          @PathVariable("attrType") String attrType) {
+        return R.ok().put("page", attrService.searchAttrs(params, catelogId, attrType));
+    }
 
     /**
      * 列表
@@ -44,18 +57,17 @@ public class AttrController {
      * 信息
      */
     @RequestMapping("/info/{attrId}")
-    public R info(@PathVariable("attrId") Long attrId) {
-        AttrEntity attr = attrService.getById(attrId);
-
-        return R.ok().put("attr", attr);
+    public R info(@PathVariable("attrId") Long attrId) throws Exception {
+        AttrResponseVo attrResponseVo = attrService.getAttrInfo(attrId);
+        return R.ok().put("attr", attrResponseVo);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody AttrEntity attr) {
-        attrService.save(attr);
+    public R save(@RequestBody AttrVo attrVo) {
+        attrService.saveAttr(attrVo);
 
         return R.ok();
     }
@@ -64,8 +76,8 @@ public class AttrController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody AttrEntity attr) {
-        attrService.updateById(attr);
+    public R update(@RequestBody AttrVo attr) {
+        attrService.updateAttr(attr);
 
         return R.ok();
     }
@@ -79,5 +91,6 @@ public class AttrController {
 
         return R.ok();
     }
+
 
 }

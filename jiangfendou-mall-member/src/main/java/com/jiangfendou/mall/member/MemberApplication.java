@@ -13,7 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *    1、声明接口的每一个方法都是调用那个远程服务的那个请求
  * 3）、开启远程调用功能
  * */
-@EnableFeignClients(basePackages = "com.jiangfendou.mall.ware.feign")
+@EnableFeignClients(basePackages = "com.jiangfendou.mall.member.feign")
 @EnableDiscoveryClient
 @MapperScan("com.jiangfendou.mall.member.dao")
 @SpringBootApplication

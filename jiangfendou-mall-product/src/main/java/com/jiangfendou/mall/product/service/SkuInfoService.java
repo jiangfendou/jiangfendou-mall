@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.mall.product.entity.SkuInfoEntity;
 
+import com.jiangfendou.mall.product.entity.SpuInfoEntity;
+import com.jiangfendou.mall.product.vo.SpuSaveVo;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+
 }
 

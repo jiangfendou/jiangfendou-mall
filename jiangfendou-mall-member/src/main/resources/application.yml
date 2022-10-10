@@ -1,13 +1,13 @@
-server:
-  port: 8082
+#server:
+#  port: 8082
 
 spring:
-  datasource:
-    #MySQL配置
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-wms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: password
+#  datasource:
+#    #MySQL配置
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-wms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: password
   # nacos
   cloud:
     nacos:
@@ -19,9 +19,9 @@ spring:
   mvc:
     servlet:
       load-on-startup: 1
-mybatis-plus:
-  mapper-locations: classpath*:/mapper/**/*/xml
-  #主键自增
-  global-config:
-    db-config:
-      id-type: auto
+#mybatis-plus:
+#  mapper-locations: classpath*:/mapper/**/*/xml
+#  #主键自增
+#  global-config:
+#    db-config:
+#      id-type: auto

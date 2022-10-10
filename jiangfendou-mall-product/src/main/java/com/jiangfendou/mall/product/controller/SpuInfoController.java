@@ -4,6 +4,7 @@ import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.common.utils.R;
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
 import com.jiangfendou.mall.product.service.SpuInfoService;
+import com.jiangfendou.mall.product.vo.SpuSaveVo;
 import java.util.Arrays;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,8 @@ public class SpuInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SpuInfoEntity spuInfo) {
-        spuInfoService.save(spuInfo);
-
+    public R save(@RequestBody SpuSaveVo spuSaveVo) {
+        spuInfoService.saveSpuInfo(spuSaveVo);
         return R.ok();
     }
 
