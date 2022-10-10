@@ -15,6 +15,9 @@ spring:
         server-addr: 124.223.77.220
   application:
     name: jiangfendou-mall-coupon
+    # 解决springboot2.6因为循环引用导致的启动错误
+  main:
+    allow-circular-references: true
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
   mvc:
     servlet:

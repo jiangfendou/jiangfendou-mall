@@ -1,5 +1,7 @@
 package com.jiangfendou.mall.product.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,6 +26,19 @@ public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesDao, SpuImagesEnt
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public void saveImages(List<String> images, Long id) {
+        if (images != null || images.size() != 0) {
+            List<SpuImagesEntity> spuImagesEntities = images.stream().map(image -> {
+                SpuImagesEntity spuImagesEntity = new SpuImagesEntity();
+                spuImagesEntity.setSpuId(id);
+                spuImagesEntity.setImgUrl(image);
+                return spuImagesEntity;
+            }).collect(Collectors.toList());
+            this.saveBatch(spuImagesEntities);
+        }
     }
 
 }

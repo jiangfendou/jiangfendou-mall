@@ -2,6 +2,7 @@ package com.jiangfendou.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jiangfendou.common.utils.PageUtils;
+import com.jiangfendou.mall.product.entity.SpuInfoDescEntity;
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
 
 import com.jiangfendou.mall.product.vo.SpuSaveVo;
@@ -21,5 +22,7 @@ public interface SpuInfoService extends IService<SpuInfoEntity> {
     void saveSpuInfo(SpuSaveVo spuSaveVo);
 
     void saveBaseSpuInfo(SpuInfoEntity spuInfoEntity);
+
+
 }
 
