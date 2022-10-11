@@ -22,6 +22,8 @@ spring:
   # 解决springboot2.6因为循环引用导致的启动错误
   main:
     allow-circular-references: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**/*/xml
 #  #主键自增
