@@ -1,9 +1,12 @@
 package com.jiangfendou.mall.product.controller;
 
+import com.jiangfendou.mall.product.entity.ProductAttrValueEntity;
+import com.jiangfendou.mall.product.service.ProductAttrValueService;
 import com.jiangfendou.mall.product.vo.AttrGroupVo;
 import com.jiangfendou.mall.product.vo.AttrResponseVo;
 import com.jiangfendou.mall.product.vo.AttrVo;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,15 @@ public class AttrController {
 
     @Autowired
     private AttrService attrService;
+
+    @Autowired
+    private ProductAttrValueService productAttrValueService;
+
+    @GetMapping(value = "/base/listforspu/{spuId}")
+    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId) {
+        List<ProductAttrValueEntity> productAttrValueEntityList = productAttrValueService.baseAttrListForSpu(spuId);
+        return R.ok().put("data", productAttrValueEntityList);
+    }
 
     @GetMapping(value = "/{attrType}/list/{catelogId}")
     public R baseAttrList(@RequestParam Map<String, Object> params,
@@ -79,6 +91,12 @@ public class AttrController {
     public R update(@RequestBody AttrVo attr) {
         attrService.updateAttr(attr);
 
+        return R.ok();
+    }
+
+    @PostMapping("/update/{spuId}")
+    public R updateSpuAttr(@PathVariable("spuId") Long spuId, @RequestBody List<ProductAttrValueEntity> entities) {
+        productAttrValueService.updateSpuAttr(spuId, entities);
         return R.ok();
     }
 

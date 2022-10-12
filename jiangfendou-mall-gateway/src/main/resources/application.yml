@@ -30,6 +30,14 @@ spring:
             - Path=/api/member/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
+        # ------------- member_route
+        - id: ware_route
+          uri: lb://jiangfendou-mall-ware
+        # 前端项目，/api
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
         # ------------- third_part_route
         - id: third_part_route
           uri: lb://jiangfendou-mall-third-part
