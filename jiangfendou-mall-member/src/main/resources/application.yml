@@ -5,7 +5,7 @@ spring:
 #  datasource:
 #    #MySQL配置
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-wms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://124.223.77.220:3306/jiangfendou-mall-ums?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #    username: root
 #    password: password
   # nacos

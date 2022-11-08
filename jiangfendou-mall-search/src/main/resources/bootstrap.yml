@@ -1,13 +1,13 @@
 spring:
   application:
-    name: jiangfendou-mall-member
+    name: jiangfendou-mall-search
   cloud:
     nacos:
       config:
         server-addr: 124.223.77.220:8848
         # 配置文件后缀名为yaml
         file-extension: yaml
-        namespace: 1c19d9eb-44d0-4f02-bbde-bbfec88a1f4b
+        namespace: 316ffc73-ae74-485f-bab0-989db44f2565
         username: nacos
         password: nacos
         extension-configs:

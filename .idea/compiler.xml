@@ -15,6 +15,7 @@
         <module name="jiangfendou-mall-generator" />
         <module name="jiangfendou-mall-gateway" />
         <module name="jiangfendou-mall-common" />
+        <module name="jiangfendou-mall-search" />
         <module name="jiangfendou-mall-admin" />
         <module name="jiangfendou-mall-ware" />
       </profile>
@@ -29,6 +30,7 @@
       <module name="jiangfendou-mall-member" target="11" />
       <module name="jiangfendou-mall-order" target="11" />
       <module name="jiangfendou-mall-product" target="11" />
+      <module name="jiangfendou-mall-search" target="11" />
       <module name="jiangfendou-mall-third-part" target="11" />
       <module name="jiangfendou-mall-ware" target="11" />
       <module name="renren-generator" target="1.8" />
@@ -45,6 +47,7 @@
       <module name="jiangfendou-mall-member" options="-parameters" />
       <module name="jiangfendou-mall-order" options="-parameters" />
       <module name="jiangfendou-mall-product" options="-parameters" />
+      <module name="jiangfendou-mall-search" options="-parameters" />
       <module name="jiangfendou-mall-third-part" options="-parameters" />
       <module name="jiangfendou-mall-ware" options="-parameters" />
       <module name="renren-generator" options="-parameters" />

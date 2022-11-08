@@ -20,5 +20,6 @@
         <module>jiangfendou-mall-common</module>
         <module>jiangfendou-mall-gateway</module>
         <module>jiangfendou-mall-third-part</module>
+        <module>jiangfendou-mall-search</module>
     </modules>
 </project>

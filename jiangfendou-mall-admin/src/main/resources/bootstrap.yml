@@ -7,4 +7,16 @@ spring:
         server-addr: 124.223.77.220:8848
         # 配置文件后缀名为yaml
         file-extension: yaml
-        namespace: db9d3acb-eca7-4f26-9427-dd88cc535d47
+        namespace: f38d3b1a-85db-4bb1-9c7e-808848b18d1e
+        username: nacos
+        password: nacos
+        extension-configs:
+          - dataId: datasource.yml
+            group: dev
+            refresh: true
+          - dataId: system_config.yml
+            group: dev
+            refresh: true
+          - dataId: mybatis.yml
+            group: dev
+            refresh: true
