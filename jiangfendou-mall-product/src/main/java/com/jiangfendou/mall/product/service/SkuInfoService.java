@@ -6,6 +6,7 @@ import com.jiangfendou.mall.product.entity.SkuInfoEntity;
 
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
 import com.jiangfendou.mall.product.vo.SpuSaveVo;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,5 +22,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
 
 
     void saveSkuInfo(SkuInfoEntity skuInfoEntity);
+
+    List<SkuInfoEntity> getSkusBySpuId(Long spuId);
 }
 

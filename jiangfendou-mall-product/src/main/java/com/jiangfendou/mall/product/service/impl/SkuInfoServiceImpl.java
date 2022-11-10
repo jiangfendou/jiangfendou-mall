@@ -3,6 +3,7 @@ package com.jiangfendou.mall.product.service.impl;
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
 import com.jiangfendou.mall.product.vo.SpuSaveVo;
 import java.math.BigDecimal;
+import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
@@ -62,5 +63,9 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         this.baseMapper.insert(skuInfoEntity);
     }
 
-
+    @Override
+    public List<SkuInfoEntity> getSkusBySpuId(Long spuId) {
+        List<SkuInfoEntity> skuInfoEntities = this.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id", spuId));
+        return skuInfoEntities;
+    }
 }

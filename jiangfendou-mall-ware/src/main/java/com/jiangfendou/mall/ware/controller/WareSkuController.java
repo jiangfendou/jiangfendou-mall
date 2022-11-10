@@ -1,10 +1,13 @@
 package com.jiangfendou.mall.ware.controller;
 
+import com.jiangfendou.common.to.SkuHasStockVo;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +32,15 @@ import com.jiangfendou.common.utils.R;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    /**
+     * 查询sku是否有库存
+     */
+    @PostMapping("/has-stock")
+    public R getSkuHasStock(@RequestBody List<Long> skuIds) {
+       List<SkuHasStockVo> vos = wareSkuService.getSkuHasStock(skuIds);
+       return R.ok().setData(vos);
+    }
 
     /**
      * 列表
