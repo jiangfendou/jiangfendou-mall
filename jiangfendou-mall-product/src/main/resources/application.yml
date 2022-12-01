@@ -1,5 +1,5 @@
-#server:
-#  port: 8084
+server:
+  port: 8084
 
 spring:
 #  datasource:
@@ -24,6 +24,29 @@ spring:
     allow-circular-references: true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+
+  # cache
+  cache:
+    type: redis
+    # cache-names: qq
+    redis:
+      # 毫秒
+      time-to-live: 3600000
+      # key的前缀，如果没有指定前缀 就默认使用缓存名字作为前缀
+      # key-prefix: CACHE_
+      # use-key-prefix: true
+      # 是否缓存空值，防止缓存穿透
+      cache-null-values: true
+
+
+  # 关闭thymeleaf的缓存
+  thymeleaf:
+    cache: false
+  # redis
+  redis:
+    host: 123.56.239.210
+    port: 6379
+    password: redis
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**/*/xml
 #  #主键自增
@@ -36,3 +59,4 @@ spring:
 #logging:
 #  level:
 #    com.jiangfendou.mall: debug
+

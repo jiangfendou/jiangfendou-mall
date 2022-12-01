@@ -3,6 +3,7 @@ package com.jiangfendou.mall.product;
 import com.jiangfendou.mall.product.entity.BrandEntity;
 import com.jiangfendou.mall.product.service.BrandService;
 import org.junit.jupiter.api.Test;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,6 +12,9 @@ class ProductApplicationTests {
 
     @Autowired
     BrandService brandService;
+
+    @Autowired
+    RedissonClient redissonClient;
 
     @Test
     void contextLoads() {
@@ -21,4 +25,8 @@ class ProductApplicationTests {
         System.out.println("保存成功！！！");
     }
 
+    @Test
+    void redisson() {
+        System.out.println(redissonClient);
+    }
 }

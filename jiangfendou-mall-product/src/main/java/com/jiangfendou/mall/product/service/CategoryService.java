@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.mall.product.entity.CategoryEntity;
 
+import com.jiangfendou.mall.product.vo.Catelog2Vo;
 import java.util.List;
 import java.util.Map;
 
@@ -28,5 +29,10 @@ public interface CategoryService extends IService<CategoryEntity> {
     Long[] getCateLogPath(Long catelogId) throws Exception;
 
     void updateCategoryInfo(CategoryEntity category);
+
+    List<CategoryEntity> getLevel1Categories();
+
+    Map<String, List<Catelog2Vo>> getCatalogJson();
+
 }
 
