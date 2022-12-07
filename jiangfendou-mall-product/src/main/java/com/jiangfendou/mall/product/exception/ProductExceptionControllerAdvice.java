@@ -25,6 +25,7 @@ public class ProductExceptionControllerAdvice {
 
     @ExceptionHandler(value = Exception.class)
     public R handException(Exception e) {
+        e.printStackTrace();
         return R.error(BaseCodeEnum.UN_KNOW_EXCEPTION.getCode(), BaseCodeEnum.UN_KNOW_EXCEPTION.getMsg());
     }
 }

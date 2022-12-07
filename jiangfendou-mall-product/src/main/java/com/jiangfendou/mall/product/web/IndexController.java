@@ -36,7 +36,7 @@ public class IndexController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @GetMapping({"/", "/index.html"})
+    @GetMapping({ "/index.html", "/"})
     public String indexPage(Model model) {
         // 查出一级分类
         List<CategoryEntity> categoryEntities = categoryService.getLevel1Categories();

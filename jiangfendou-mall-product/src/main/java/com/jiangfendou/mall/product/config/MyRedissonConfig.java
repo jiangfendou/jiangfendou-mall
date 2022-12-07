@@ -25,8 +25,8 @@ public class MyRedissonConfig {
 //        config.useClusterServers()
 //            .addNodeAddress("123.56.239.210:")
         config.useSingleServer()
-            .setAddress("redis://123.56.239.210:6379")
-            .setPassword("redis");
+            .setAddress("redis://124.223.77.220:6379")
+            .setPassword("123456");
         return Redisson.create(config);
     }
 }

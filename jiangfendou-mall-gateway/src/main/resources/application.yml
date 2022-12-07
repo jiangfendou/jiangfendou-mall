@@ -54,12 +54,18 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
-        # ------------- nginx
+        # ------------- nginx index
         - id: mall_host_route
           uri: lb://jiangfendou-mall-product
           # 前端项目，/api
           predicates:
-            - Host=**.jiangfendou.com,jiangfendou.com
+            - Host=jiangfendou.com
+        # ------------- nginx search
+        - id: mall_search_route
+          uri: lb://jiangfendou-mall-search
+          # 前端项目，/api
+          predicates:
+            - Host=search.jiangfendou.com
 
   application:
     name: jiangfendou-mall-gateway
