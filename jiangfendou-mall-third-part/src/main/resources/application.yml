@@ -13,11 +13,6 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
-    alicloud:
-      sms:
-        host: https://dfsns.market.alicloudapi.com
-        path: /data/send_sms
-        appcode: a02f758f118841d1b9f659cfc529a3bf
 #    alicloud:
 #      access-key: LTAI5tCovGXpzjnG7FtSefLc
 #      secret-key: snjiQ2oBDGMvlGKzm9nPZ6zV4rvRqH
