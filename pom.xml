@@ -21,5 +21,6 @@
         <module>jiangfendou-mall-gateway</module>
         <module>jiangfendou-mall-third-part</module>
         <module>jiangfendou-mall-search</module>
+        <module>jiangfendou-mall-auth-server</module>
     </modules>
 </project>

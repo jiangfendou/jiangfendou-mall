@@ -1,11 +1,17 @@
 package com.jiangfendou.mall.member.controller;
 
+import com.jiangfendou.common.exception.BaseCodeEnum;
+import com.jiangfendou.mall.member.exception.PhoneException;
+import com.jiangfendou.mall.member.exception.UsernameException;
 import com.jiangfendou.mall.member.feign.CouponFeignService;
+import com.jiangfendou.mall.member.vo.MemberUserLoginVo;
+import com.jiangfendou.mall.member.vo.MemberUserRegisterVo;
 import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +39,31 @@ public class MemberController {
 
     @Autowired
     private CouponFeignService couponFeignService;
+
+    @PostMapping(value = "/register")
+    public R register(@RequestBody MemberUserRegisterVo vo) {
+
+        try {
+            memberService.register(vo);
+        } catch (PhoneException e) {
+            return R.error(BaseCodeEnum.PHONE_EXIST_EXCEPTION.getCode(),BaseCodeEnum.PHONE_EXIST_EXCEPTION.getMsg());
+        } catch (UsernameException e) {
+            return R.error(BaseCodeEnum.USER_EXIST_EXCEPTION.getCode(),BaseCodeEnum.USER_EXIST_EXCEPTION.getMsg());
+        }
+        return R.ok();
+    }
+
+    @PostMapping(value = "/login")
+    public R login(@RequestBody MemberUserLoginVo vo) {
+
+        MemberEntity memberEntity = memberService.login(vo);
+
+        if (memberEntity != null) {
+            return R.ok().setData(memberEntity);
+        } else {
+            return R.error(BaseCodeEnum.LOGINACCT_PASSWORD_EXCEPTION.getCode(),BaseCodeEnum.LOGINACCT_PASSWORD_EXCEPTION.getMsg());
+        }
+    }
 
     @RequestMapping("/coupons")
     public R test() {

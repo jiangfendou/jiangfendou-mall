@@ -9,7 +9,19 @@ public enum BaseCodeEnum {
 
     VALID_EXCEPTION(1001, "参数校验失败"),
 
-    PRODUCT_UP_ERROR(1002, "商品上架异常");
+    PRODUCT_UP_ERROR(1002, "商品上架异常"),
+
+    VALID_SMS_CODE_EXCEPTION(1003, "验证码获取频率太高稍后再试"),
+
+    PRODUCT_UP_EXCEPTION(1004,"商品上架异常"),
+
+    USER_EXIST_EXCEPTION(1005,"存在相同的用户"),
+
+    PHONE_EXIST_EXCEPTION(1006,"存在相同的手机号"),
+
+    NO_STOCK_EXCEPTION(1007,"商品库存不足"),
+
+    LOGINACCT_PASSWORD_EXCEPTION(1008,"账号或密码错误");
 
     private int code;
 

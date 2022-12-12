@@ -6,6 +6,7 @@ import com.jiangfendou.mall.product.entity.AttrEntity;
 import com.jiangfendou.mall.product.entity.AttrGroupEntity;
 
 import com.jiangfendou.mall.product.vo.AttrGroupWithAttrsVo;
+import com.jiangfendou.mall.product.vo.SpuItemAttrGroupVo;
 import java.util.List;
 import java.util.Map;
 
@@ -23,5 +24,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
     AttrGroupEntity getAttrGroupDetail(Long attrGroupId) throws Exception;
 
     List<AttrGroupWithAttrsVo> getAttrGroupWithAttrs(Long catelogId);
+
+    List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId);
 }
 

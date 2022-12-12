@@ -4,6 +4,7 @@ import com.jiangfendou.mall.product.entity.AttrEntity;
 import com.jiangfendou.mall.product.service.AttrService;
 import com.jiangfendou.mall.product.service.CategoryService;
 import com.jiangfendou.mall.product.vo.AttrGroupWithAttrsVo;
+import com.jiangfendou.mall.product.vo.SpuItemAttrGroupVo;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
@@ -79,6 +80,15 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         }).collect(Collectors.toList());
 
         return attrGroupWithAttrsVos;
+    }
+
+    @Override
+    public List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+        // 查出当前sup对应的所有属性的分组信息 以及当前分组下的所有属性对应的值
+        AttrGroupDao baseMapper = this.getBaseMapper();
+        List<SpuItemAttrGroupVo> vos = baseMapper.getAttrGroupWithAttrsBySpuId(spuId,catalogId);
+
+        return vos;
     }
 
 }

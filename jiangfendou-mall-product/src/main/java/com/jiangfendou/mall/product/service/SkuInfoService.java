@@ -5,9 +5,11 @@ import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.mall.product.entity.SkuInfoEntity;
 
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
+import com.jiangfendou.mall.product.vo.SkuItemVo;
 import com.jiangfendou.mall.product.vo.SpuSaveVo;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * sku信息
@@ -24,5 +26,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     void saveSkuInfo(SkuInfoEntity skuInfoEntity);
 
     List<SkuInfoEntity> getSkusBySpuId(Long spuId);
+
+    SkuItemVo skuItem(Long skuId) throws ExecutionException, InterruptedException;
 }
 

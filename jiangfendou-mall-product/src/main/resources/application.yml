@@ -58,3 +58,10 @@ spring:
 #  level:
 #    com.jiangfendou.mall: debug
 
+#配置线程池
+jiangfendou:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10
+
