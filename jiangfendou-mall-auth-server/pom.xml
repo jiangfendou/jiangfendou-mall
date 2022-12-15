@@ -108,6 +108,11 @@
             <version>2.1.5.RELEASE</version>
         </dependency>
 
+        <!-- 整合spring session 完成session 共享问题 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

@@ -96,7 +96,8 @@ public class LoginController {
         String code = vos.getCode();
 
         //获取存入Redis里的验证码
-        String redisCode = stringRedisTemplate.opsForValue().get(AuthServerConstant.SMS_CODE_CACHE_PREFIX + vos.getPhone());
+        String redisCode = stringRedisTemplate.opsForValue()
+            .get(AuthServerConstant.SMS_CODE_CACHE_PREFIX + vos.getPhone());
         if (!StringUtils.isEmpty(redisCode)) {
             //截取字符串
             if (code.equals(redisCode.split("_")[0])) {
@@ -148,5 +149,19 @@ public class LoginController {
             attributes.addFlashAttribute("errors",errors);
             return "redirect:http://auth.jiangfendou.com/login.html";
         }
+    }
+
+    @GetMapping(value = "/login.html")
+    public String loginPage(HttpSession session) {
+
+        //从session先取出来用户的信息，判断用户是否已经登录过了
+        Object attribute = session.getAttribute(LOGIN_USER);
+        //如果用户没登录那就跳转到登录页面
+        if (attribute == null) {
+            return "login";
+        } else {
+            return "redirect:http://jiangfendou.com";
+        }
+
     }
 }

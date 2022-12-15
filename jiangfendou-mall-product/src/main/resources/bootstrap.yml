@@ -7,7 +7,7 @@ spring:
         server-addr: 124.223.77.220:8848
         # 配置文件后缀名为yaml
         file-extension: yaml
-        namespace: 932e3d9a-e39c-4350-8747-c118ac7d3010
+        namespace: 8812ea83-572a-464a-9b32-3cd6741c6cd6
         username: nacos
         password: nacos
         extension-configs:

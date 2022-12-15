@@ -6,6 +6,7 @@ import com.jiangfendou.mall.member.exception.UsernameException;
 import com.jiangfendou.mall.member.feign.CouponFeignService;
 import com.jiangfendou.mall.member.vo.MemberUserLoginVo;
 import com.jiangfendou.mall.member.vo.MemberUserRegisterVo;
+import com.jiangfendou.mall.member.vo.SocialUser;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -51,6 +52,19 @@ public class MemberController {
             return R.error(BaseCodeEnum.USER_EXIST_EXCEPTION.getCode(),BaseCodeEnum.USER_EXIST_EXCEPTION.getMsg());
         }
         return R.ok();
+    }
+
+    @PostMapping(value = "/oauth2/login")
+    public R oauthLogin(@RequestBody SocialUser socialUser) throws Exception {
+
+        MemberEntity memberEntity = memberService.login(socialUser);
+
+        if (memberEntity != null) {
+            return R.ok().setData(memberEntity);
+        } else {
+            return R.error(BaseCodeEnum.LOGINACCT_PASSWORD_EXCEPTION.getCode(),
+                BaseCodeEnum.LOGINACCT_PASSWORD_EXCEPTION.getMsg());
+        }
     }
 
     @PostMapping(value = "/login")
