@@ -33,14 +33,10 @@ public class OAuth2Controller {
     public String weibo(@RequestParam("code") String code, HttpSession session) throws Exception {
 
         Map<String, String> map = new HashMap<>();
-        // TODO 微博没创建好
-        map.put("client_id", "2077705774");
-        // TODO 微博没创建好
-        map.put("client_secret", "40af02bd1c7e435ba6a6e9cd3bf799fd");
-        // TODO 微博没创建好
+        map.put("client_id", "3364825010");
+        map.put("client_secret", "9c845fd5d4763047dc2af5f1a5065643");
         map.put("grant_type", "authorization_code");
-        // TODO 微博没创建好
-        map.put("redirect_uri", "http://auth.gulimall.com/oauth2.0/weibo/success");
+        map.put("redirect_uri", "http://auth.jiangfendou.com/oauth2.0/weibo/success");
         map.put("code", code);
 
         //1、根据用户授权返回的code换取access_token

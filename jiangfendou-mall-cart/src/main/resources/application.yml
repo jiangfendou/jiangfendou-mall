@@ -1,0 +1,38 @@
+server:
+  port: 8090
+  servlet:
+    session:
+      timeout: 30m
+
+spring:
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.223.77.220
+  application:
+    name: jiangfendou-mall-cart
+  # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
+  mvc:
+    servlet:
+      load-on-startup: 1
+  # 解决springboot2.6因为循环引用导致的启动错误
+  main:
+    allow-circular-references: true
+  # redis
+  redis:
+    host: 124.223.77.220
+    port: 6379
+    password: 123456
+  # 关闭thymeleaf的缓存
+  thymeleaf:
+    cache: false
+  session:
+    store-type: redis
+
+#配置线程池
+jiangfendou:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10

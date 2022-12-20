@@ -3,9 +3,9 @@ package com.jiangfendou.mall.auth.web;
 //import com.alibaba.fastjson.TypeReference;
 //import com.xunqi.common.utils.R;
 //import com.xunqi.common.vo.MemberResponseVo;
-//import com.xunqi.gulimall.auth.feign.MemberFeignService;
-//import com.xunqi.gulimall.auth.utils.ConstantWxUtils;
-//import com.xunqi.gulimall.auth.utils.HttpClientUtils;
+//import com.xunqi.jiangfendou.auth.feign.MemberFeignService;
+//import com.xunqi.jiangfendou.auth.utils.ConstantWxUtils;
+//import com.xunqi.jiangfendou.auth.utils.HttpClientUtils;
 import com.jiangfendou.common.utils.R;
 import com.jiangfendou.common.vo.MemberResponseVo;
 import com.jiangfendou.mall.auth.feign.MemberFeignService;
@@ -80,16 +80,16 @@ public class WxApiController {
 //                session.setAttribute(LOGIN_USER,data);
 //
 //                //2、登录成功跳回首页
-//                return "redirect:http://gulimall.com";
+//                return "redirect:http://jiangfendou.com";
 //            } else {
 //
-//                return "redirect:http://auth.gulimall.com/login.html";
+//                return "redirect:http://auth.jiangfendou.com/login.html";
 //            }
 //
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//        return "redirect:http://auth.gulimall.com/login.html";
+//        return "redirect:http://auth.jiangfendou.com/login.html";
 //    }
 //
 //    /**

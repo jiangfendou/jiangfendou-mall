@@ -89,7 +89,7 @@ public class LoginController {
             attributes.addFlashAttribute("errors",errors);
 
             //效验出错回到注册页面
-            return "redirect:http://auth.gulimall.com/reg.html";
+            return "redirect:http://auth.jiangfendou.com/reg.html";
         }
 
         //1、效验验证码

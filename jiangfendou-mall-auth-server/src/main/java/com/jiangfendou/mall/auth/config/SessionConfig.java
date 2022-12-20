@@ -1,5 +1,6 @@
 package com.jiangfendou.mall.auth.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -19,13 +20,11 @@ public class SessionConfig {
     @Bean
     public CookieSerializer cookieSerializer() {
 
-        DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
+        DefaultCookieSerializer serializer = new DefaultCookieSerializer();
+        serializer.setCookieName("JIANGSESSION");
+        serializer.setDomainName("jiangfendou.com");
+        return serializer;
 
-        //放大作用域
-        cookieSerializer.setDomainName("jiangferndou.com");
-        cookieSerializer.setCookieName("JIANGSESSION");
-
-        return cookieSerializer;
     }
 
 

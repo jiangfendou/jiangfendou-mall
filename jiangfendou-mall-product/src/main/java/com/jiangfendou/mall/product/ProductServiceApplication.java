@@ -46,7 +46,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  *  CacheManager(RedisCacheManager) -> Cache(RedisCache) -> Cache 负责缓存读写
  */
 // 开启redis缓存session
-//@EnableRedisHttpSession
+@EnableRedisHttpSession
 // 开启openfeign的注解
 @EnableFeignClients(basePackages = "com.jiangfendou.mall.product.feign")
 // 开启注册中心的注解

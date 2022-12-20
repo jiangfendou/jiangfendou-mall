@@ -22,5 +22,6 @@
         <module>jiangfendou-mall-third-part</module>
         <module>jiangfendou-mall-search</module>
         <module>jiangfendou-mall-auth-server</module>
+        <module>jiangfendou-mall-cart</module>
     </modules>
 </project>

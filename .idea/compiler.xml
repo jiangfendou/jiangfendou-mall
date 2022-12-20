@@ -9,14 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jiangfendou-mall-auth-server" />
         <module name="jiangfendou-mall-coupon" />
-        <module name="jiangfendou-mall-order" />
-        <module name="jiangfendou-mall-product" />
-        <module name="jiangfendou-mall-member" />
-        <module name="jiangfendou-mall-third-part" />
-        <module name="jiangfendou-mall-generator" />
         <module name="jiangfendou-mall-gateway" />
         <module name="jiangfendou-mall-common" />
         <module name="jiangfendou-mall-search" />
+        <module name="jiangfendou-mall-order" />
+        <module name="jiangfendou-mall-product" />
+        <module name="jiangfendou-mall-cart" />
+        <module name="jiangfendou-mall-member" />
+        <module name="jiangfendou-mall-third-part" />
+        <module name="jiangfendou-mall-generator" />
         <module name="jiangfendou-mall-admin" />
         <module name="jiangfendou-mall-ware" />
       </profile>
@@ -25,6 +26,7 @@
       <module name="jiangfendou-mall-admin" target="11" />
       <module name="jiangfendou-mall-auth-server" target="11" />
       <module name="jiangfendou-mall-backend" target="1.5" />
+      <module name="jiangfendou-mall-cart" target="11" />
       <module name="jiangfendou-mall-common" target="11" />
       <module name="jiangfendou-mall-coupon" target="11" />
       <module name="jiangfendou-mall-gateway" target="11" />
@@ -43,6 +45,7 @@
       <module name="jiangfendou-mall-admin" options="-parameters" />
       <module name="jiangfendou-mall-auth-server" options="-parameters" />
       <module name="jiangfendou-mall-backend" options="-parameters" />
+      <module name="jiangfendou-mall-cart" options="-parameters" />
       <module name="jiangfendou-mall-common" options="" />
       <module name="jiangfendou-mall-coupon" options="-parameters" />
       <module name="jiangfendou-mall-gateway" options="-parameters" />
