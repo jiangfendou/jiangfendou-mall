@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * @Description: 在执行目标方法之前，判断用户的登录状态.并封装传递给controller目标请求
  **/
-@Component
 public class CartInterceptor implements HandlerInterceptor {
 
 

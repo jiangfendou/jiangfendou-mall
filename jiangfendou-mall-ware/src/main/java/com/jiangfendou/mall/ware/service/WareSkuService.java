@@ -7,6 +7,7 @@ import com.jiangfendou.common.to.SkuHasStockVo;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.mall.ware.entity.WareSkuEntity;
 
+import com.jiangfendou.mall.ware.vo.WareSkuLockVo;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,7 @@ public interface WareSkuService extends IService<WareSkuEntity> {
     void addStock(Long skuId, Long wareId, Integer skuNum);
 
     List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds);
+
+    boolean orderLockStock(WareSkuLockVo vo);
 }
 

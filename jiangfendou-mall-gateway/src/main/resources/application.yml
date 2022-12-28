@@ -77,6 +77,11 @@ spring:
           uri: lb://jiangfendou-mall-cart
           predicates:
             - Host=cart.jiangfendou.com
+        # ------------- nginx order
+        - id: mall_order_route
+          uri: lb://jiangfendou-mall-order
+          predicates:
+            - Host=order.jiangfendou.com
   application:
     name: jiangfendou-mall-gateway
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启

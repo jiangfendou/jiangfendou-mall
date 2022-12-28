@@ -3,6 +3,7 @@ package com.jiangfendou.mall.member.service.impl;
 import com.jiangfendou.mall.member.dao.MemberReceiveAddressDao;
 import com.jiangfendou.mall.member.entity.MemberReceiveAddressEntity;
 import com.jiangfendou.mall.member.service.MemberReceiveAddressService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,6 +25,15 @@ public class MemberReceiveAddressServiceImpl extends ServiceImpl<MemberReceiveAd
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<MemberReceiveAddressEntity> getAddress(Long memberId) {
+
+        List<MemberReceiveAddressEntity> addressList = this.baseMapper.selectList
+            (new QueryWrapper<MemberReceiveAddressEntity>().eq("member_id", memberId));
+
+        return addressList;
     }
 
 }

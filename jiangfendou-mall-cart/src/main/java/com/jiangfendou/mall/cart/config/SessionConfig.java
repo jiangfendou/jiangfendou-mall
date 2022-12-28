@@ -13,7 +13,7 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
  * 自定义浏览器cooking的domain和cooking的name
  * @author jiangmh
  */
-//@Configuration
+@Configuration
 public class SessionConfig {
 
     @Bean
