@@ -24,6 +24,31 @@ spring:
     allow-circular-references: true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  rabbitmq:
+    host: 124.223.77.220
+    port: 5672
+    virtual-host: /
+    # 开启发送端确认
+    # ·NONE
+    # 禁用发布确认模式，是默认值
+    # ·CORRELATED
+    # 发布消息成功或失败到交换器后会触发回调方法
+    # ·SIMPLE    性能差
+    # 经测试有两种效果，其一效果和CORRELATED值一样会触发回调方法，
+    # 其二在发布消息成功后使用rabbitTemplate调用waitForConfirms或waitForConfirmsOrDie方法
+    # 等待broker节点返回发送结果，根据返回结果来判定下一步的逻辑，要注意的点是
+    # waitForConfirmsOrDie方法如果返回false则会关闭channel，则接下来无法发送消息到broker
+    publisher-confirm-type: correlated
+    # 队列发布确认，失败会回调
+    publisher-returns: true
+    # 只要抵达队列，以异步发送有点回调我们这个return confirm
+    template:
+      mandatory: true
+    # 手动ACK 手动确认收货
+    listener:
+      type: simple
+      simple:
+        acknowledge-mode: manual
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**/*/xml
 #  #主键自增
@@ -57,3 +82,4 @@ spring:
 #    vgroup-mapping:
 #      my_test_tx_group: default #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
       #注意：此处的my_test_tx_group需要和上面seata.tx-service-group以及config.txt中的配置对应
+

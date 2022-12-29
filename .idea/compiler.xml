@@ -18,13 +18,13 @@
         <module name="jiangfendou-mall-gateway" />
         <module name="jiangfendou-mall-search" />
         <module name="jiangfendou-mall-admin" />
+        <module name="jiangfendou-mall-ware" />
       </profile>
       <profile name="Annotation profile for jiangfendou-mall" enabled="true">
         <sourceOutputDir name="../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jiangfendou-mall-common" />
-        <module name="jiangfendou-mall-ware" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

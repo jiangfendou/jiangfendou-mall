@@ -2,8 +2,6 @@ package com.jiangfendou.mall.order.service.impl;
 
 import static com.jiangfendou.common.constant.CartConstant.CART_PREFIX;
 import static com.jiangfendou.mall.order.constant.OrderConstant.USER_ORDER_TOKEN_PREFIX;
-
-
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.jiangfendou.common.exception.NoStockException;
@@ -237,13 +235,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 if (r.getCode() == 0) {
                     // 锁定成功
                     responseVo.setOrder(order.getOrder());
-                    // int i = 10/0;
+//                     int i = 10/0;
 
                     // 订单创建成功，发送消息给MQ
                     rabbitTemplate.convertAndSend("order-event-exchange","order.create.order",order.getOrder());
 //
 //                    // 删除购物车里的数据
-//                    redisTemplate.delete(CART_PREFIX + memberResponseVo.getId());
+                    redisTemplate.delete(CART_PREFIX + memberResponseVo.getId());
                     return responseVo;
                 } else {
                     // 锁定失败
@@ -258,6 +256,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 return responseVo;
             }
         }
+    }
+
+    @Override
+    public OrderEntity getOrderByOrderSn(String orderSn) {
+        OrderEntity orderEntity = this.baseMapper.selectOne(new QueryWrapper<OrderEntity>()
+            .eq("order_sn", orderSn));
+        return orderEntity;
     }
 
     private OrderCreateTo createOrder() {
