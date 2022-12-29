@@ -1,5 +1,6 @@
 package com.jiangfendou.mall.ware.listener;
 
+import com.jiangfendou.common.to.OrderTo;
 import com.jiangfendou.common.to.mq.StockLockedTo;
 import com.jiangfendou.mall.ware.service.WareSkuService;
 import com.rabbitmq.client.Channel;
@@ -47,20 +48,20 @@ public class StockReleaseListener {
         }
     }
 
-//    @RabbitHandler
-//    public void handleOrderCloseRelease(OrderTo orderTo, Message message, Channel channel) throws IOException {
-//
-//        log.info("******收到订单关闭，准备解锁库存的信息******");
-//
-//        try {
-//            wareSkuService.unlockStock(orderTo);
-//            // 手动删除消息
-//            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-//        } catch (Exception e) {
-//            // 解锁失败 将消息重新放回队列，让别人消费
-//            channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
-//        }
-//    }
+    @RabbitHandler
+    public void handleOrderCloseRelease(OrderTo orderTo, Message message, Channel channel) throws IOException {
+
+        log.info("******收到订单关闭，准备解锁库存的信息******");
+
+        try {
+            wareSkuService.unlockStock(orderTo);
+            // 手动删除消息
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        } catch (Exception e) {
+            // 解锁失败 将消息重新放回队列，让别人消费
+            channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
+        }
+    }
 
 
 }

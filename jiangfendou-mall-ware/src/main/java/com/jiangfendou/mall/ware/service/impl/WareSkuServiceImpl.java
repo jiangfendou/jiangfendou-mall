@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -42,10 +43,10 @@ import com.jiangfendou.common.utils.Query;
 import com.jiangfendou.mall.ware.dao.WareSkuDao;
 import com.jiangfendou.mall.ware.entity.WareSkuEntity;
 import com.jiangfendou.mall.ware.service.WareSkuService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-
-@RabbitListener(queues = "stock.release.stock.queue")
+@Slf4j
 @Service("wareSkuService")
 public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity>
     implements WareSkuService {
@@ -245,7 +246,10 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity>
                     if (taskDetailInfo.getLockStatus() == 1) {
                         // 当前库存工作单详情状态1，已锁定，但是未解锁才可以解锁
                         unLockStock(detail.getSkuId(),detail.getWareId(),detail.getSkuNum(),detailId);
+                        log.info("库存解锁成功~~~~~~~~~~~~~~~~");
                     }
+                } else {
+                    log.info("订单状态正常无所解锁库存");
                 }
             } else {
                 // 消息拒绝以后重新放在队列里面，让别人继续消费解锁
@@ -255,8 +259,30 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity>
         }
     }
 
+    /**
+     * 防止订单服务卡顿，导致订单状态消息一直改不了，库存优先到期，查订单状态新建，什么都不处理
+     * 导致卡顿的订单，永远都不能解锁库存
+     * @param orderTo
+     */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void unlockStock(OrderTo orderTo) {
+
+        String orderSn = orderTo.getOrderSn();
+        // 查一下最新的库存解锁状态，防止重复解锁库存
+        WareOrderTaskEntity orderTaskEntity = wareOrderTaskService.getOrderTaskByOrderSn(orderSn);
+
+        // 按照工作单的id找到所有 没有解锁的库存，进行解锁
+        Long id = orderTaskEntity.getId();
+        List<WareOrderTaskDetailEntity> list = wareOrderTaskDetailService.list(new QueryWrapper<WareOrderTaskDetailEntity>()
+            .eq("task_id", id).eq("lock_status", 1));
+
+        for (WareOrderTaskDetailEntity taskDetailEntity : list) {
+            unLockStock(taskDetailEntity.getSkuId(),
+                taskDetailEntity.getWareId(),
+                taskDetailEntity.getSkuNum(),
+                taskDetailEntity.getId());
+        }
 
     }
 
