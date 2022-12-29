@@ -286,6 +286,17 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity>
 
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void test() {
+        WareSkuEntity wareSkuEntity = new WareSkuEntity();
+        wareSkuEntity.setSkuName("test");
+        wareSkuEntity.setWareId(1L);
+        wareSkuEntity.setStockLocked(1);
+        this.baseMapper.insert(wareSkuEntity);
+        int num = 10/0;
+    }
+
     /**
      * 解锁库存的方法
      * @param skuId

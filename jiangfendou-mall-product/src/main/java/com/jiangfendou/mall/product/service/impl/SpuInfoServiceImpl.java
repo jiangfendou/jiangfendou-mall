@@ -33,6 +33,7 @@ import com.jiangfendou.mall.product.vo.Bounds;
 import com.jiangfendou.mall.product.vo.Images;
 import com.jiangfendou.mall.product.vo.Skus;
 import com.jiangfendou.mall.product.vo.SpuSaveVo;
+import io.seata.spring.annotation.GlobalTransactional;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
@@ -128,6 +129,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
+    @GlobalTransactional(rollbackFor = Exception.class)
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveSpuInfo(SpuSaveVo spuSaveVo) {

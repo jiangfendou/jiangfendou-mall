@@ -29,5 +29,7 @@ public interface OrderService extends IService<OrderEntity> {
 
     void closeOrder(OrderEntity orderEntity);
 
+    void test();
+
 }
 

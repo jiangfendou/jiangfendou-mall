@@ -14,7 +14,7 @@
     <description>谷粒商城-查询服务</description>
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
         <elasticsearch.version>7.4.2</elasticsearch.version>
     </properties>
     <dependencies>

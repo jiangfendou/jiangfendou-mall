@@ -33,4 +33,29 @@ spring:
 #  user:
 #    name: jiangfendou
 
+seata:
+  application-id: ${spring.application.name}
+  enabled: true
+  tx-service-group: my_test_tx_group #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 124.223.77.220:8848 #nacos的连接地址
+      namespace: 2b0b4c20-5368-478b-b7dc-5eb34fb4300f #在nacos中创建的seata命名空间ID
+      group: SEATA_GROUP #seata配置的分组名称
+      cluster: default
+      username: nacos
+      password: nacos
+  config:
+    type: nacos
+    nacos:
+      server-addr: 124.223.77.220:8848 #nacos的连接地址
+      namespace: 2b0b4c20-5368-478b-b7dc-5eb34fb4300f #在nacos中创建的seata命名空间ID
+      group: SEATA_GROUP #seata配置的分组名称
+      username: nacos
+      password: nacos
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
+
 

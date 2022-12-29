@@ -28,6 +28,7 @@ import com.jiangfendou.mall.order.vo.SkuStockVo;
 import com.jiangfendou.mall.order.vo.SubmitOrderResponseVo;
 import com.jiangfendou.mall.order.vo.WareSkuLockVo;
 //import io.seata.spring.annotation.GlobalTransactional;
+import io.seata.spring.annotation.GlobalTransactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -302,6 +303,22 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             } catch (Exception e) {
                 // 定期扫描数据库，重新发送失败的消息
             }
+        }
+    }
+
+    @GlobalTransactional(rollbackFor = Exception.class)
+    @Override
+    public void test() {
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setOrderSn(UUID.randomUUID().toString());
+        orderEntity.setStatus(1);
+        this.save(orderEntity);
+
+        // 调用远程服务
+        R test = wmsFeignService.test();
+        Integer code = test.getCode();
+        if (code == 0) {
+            System.out.println("没有抛出异常啊！！！");
         }
     }
 

@@ -39,9 +39,7 @@ public class OrderController {
     @ResponseBody
     @GetMapping("/test")
     public String createOrderTest() {
-        OrderEntity orderEntity = new OrderEntity();
-        orderEntity.setOrderSn("111111111111");
-        rabbitTemplate.convertAndSend("order-event-exchange", "order.create.order",orderEntity);
+        orderService.test();
         return "ok";
     }
 

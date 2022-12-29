@@ -37,4 +37,8 @@ public interface WmsFeignService {
      */
     @PostMapping(value = "/ware/waresku/lock/order")
     R orderLockStock(@RequestBody WareSkuLockVo vo);
+
+
+    @GetMapping(value = "/ware/waresku/test")
+    R test();
 }
