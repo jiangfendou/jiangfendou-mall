@@ -1,4 +1,4 @@
-package com.jiangfendou.mall.order.interceptor;
+package com.jiangfendou.mall.member.interceptor;
 
 import com.jiangfendou.common.constant.AuthServerConstant;
 import com.jiangfendou.common.vo.MemberResponseVo;
@@ -16,11 +16,11 @@ public class LoginUserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
-        AntPathMatcher antPathMatcher = new AntPathMatcher();
-        boolean match = antPathMatcher.match("/order/order/status/**", request.getRequestURI());
-        boolean match1 = antPathMatcher.match("/payed/notify", request.getRequestURI());
+
+        boolean match = new AntPathMatcher().match("/**", request.getRequestURI());
+
 //        boolean match = new AntPathMatcher().match("/order/order/test", request.getRequestURI());
-        if (match || match1) {
+        if (match) {
             return true;
         }
         MemberResponseVo attribute = (MemberResponseVo)request.getSession().getAttribute(AuthServerConstant.LOGIN_USER);

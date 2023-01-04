@@ -6,6 +6,8 @@ import com.jiangfendou.mall.order.entity.OrderEntity;
 
 import com.jiangfendou.mall.order.vo.OrderConfirmVo;
 import com.jiangfendou.mall.order.vo.OrderSubmitVo;
+import com.jiangfendou.mall.order.vo.PayAsyncVo;
+import com.jiangfendou.mall.order.vo.PayVo;
 import com.jiangfendou.mall.order.vo.SubmitOrderResponseVo;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -31,5 +33,12 @@ public interface OrderService extends IService<OrderEntity> {
 
     void test();
 
+    PayVo getOrderPay(String orderSn);
+
+    PageUtils queryPageWithItem(Map<String, Object> params);
+
+    String handlePayResult(PayAsyncVo asyncVo);
+
+    String asyncNotify(String notifyData);
 }
 

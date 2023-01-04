@@ -294,7 +294,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity>
         wareSkuEntity.setWareId(1L);
         wareSkuEntity.setStockLocked(1);
         this.baseMapper.insert(wareSkuEntity);
-        int num = 10/0;
+//        int num = 10/0;
     }
 
     /**

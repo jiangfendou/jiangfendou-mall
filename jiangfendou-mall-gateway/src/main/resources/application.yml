@@ -82,6 +82,11 @@ spring:
           uri: lb://jiangfendou-mall-order
           predicates:
             - Host=order.jiangfendou.com
+        # ------------- nginx member
+        - id: mall_member_route
+          uri: lb://jiangfendou-mall-member
+          predicates:
+            - Host=member.jiangfendou.com
   application:
     name: jiangfendou-mall-gateway
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启

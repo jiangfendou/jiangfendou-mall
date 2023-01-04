@@ -23,6 +23,7 @@ public class OrderCloseListener {
     public void listener(OrderEntity orderEntity, Channel channel, Message message) throws IOException {
         try {
             orderService.closeOrder(orderEntity);
+            // 手动调用支付宝收单
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
         } catch (Exception e) {
             e.printStackTrace();

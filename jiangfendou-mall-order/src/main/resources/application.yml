@@ -58,6 +58,9 @@ spring:
     password: 123456
   session:
     store-type: redis
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
 
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**.xml
@@ -115,3 +118,16 @@ seata:
     vgroup-mapping:
       my_test_tx_group: default #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
       #注意：此处的my_test_tx_group需要和上面seata.tx-service-group以及config.txt中的配置对应
+
+
+# 支付宝配置
+alipay:
+  app_id: 2021000122606271
+  merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrHx3lt8rtxSHfuNjYpQ5vkqv23Q9p4q9h1iSYVHBPBxkKtS2gsYXZfLMysa8Rba/AfL5vcLtO+4Fz2cbk8kVsZkojUtcz7NImA77eRYmeSOCNNoYx7VuhvBbSrM7alMP69BmPtwf1P4AcmRloK1IhcdSI7H9W0WE17n4IyuWte73SbXV+DOFHmt6zD5fqJOaJxnd3zJEm2T7Kwc3lGRcIab/m8vJ9nldd3+gSJzloWtMkR2vDjjAQ//8nR2k6bxpucoKvdWsQ0F0RnkqT3Ht8h1yihX4SCtUhoujan+d9eO2To8p6Lu+TfZiMj1c5SyLM6K5WY3hB7G8fOidjzFubAgMBAAECggEAKLDdiyKJPsEBrRFnfxzAsgdOnQU0BRnCWqFxUkfB7QjjC4jJsMyF55Gfiw51cs+CW2NOZXGJGN71iXbftNFncL9iIcQxKEfIMQHzASfH8buiqfGtN3IZt/vh8XbmOVPmxmYFLgd3/Pl8nVBKmlqyzQEkaOrT3PEtDIYJsk2NEBNZCUInqWPMOB/BDR/SwnxPugSVL5mcBE7LgTWirIy6r8IJtpanH3HU5Dz9C+g3dkbAF32hsM2FzWC+PDOFPtJgMTPR6hWgXDXT81IoRVsYWwFhj6zNxJ9Sr6/JPPa3y0DcMJZPOIMKVv35S4Lq49vre6gf6W+KiaG7H6Gh0sbCAQKBgQDbaO9+SpCYtGEK3wS1q/0P5FiYMNN5lwNjcH1JpIiN2u3wsklsd5C0BxEj502aGE3ixgslxFH8E3iX35yfaeQAeACCxeS/wmKpUbJ0TESs9pW+bFpYmBGbc1I2pgchKuj+cOjjdYpkLVK3c18sUi1hHwTNtHy/lM6Rk1fER78ieQKBgQDHqKawknFqSOj8nmj66UaNvMAm9k2InVM7SW10cj/9aGmErpxrYJVzqp7o0WZyIUumzbbdrYG+2a0Piy/CJ2qGt4/pV9TVl6hPuPy7FZlr3EGTawZkRTEWvYTaeO8rN9+2mkdCPaP41f+By/oueJ094Ag4p/SWGCa5QMRmdDkJswKBgHcngsCcL/CuLPFhckZTE8h4ouBry70BlPaA1ZmTwBEBryyDNjqwqCYMnHNaHxurTUj1coJdHoT98gTQjFdKg2b5xJVAcVzubPQ1COv9q2IfO+1BHMN2OkGonCJPghmyGvxrRx6X68NBleVIw4vnSPuwg8RO21yTrKcEVKqkqBlJAoGBAK6r3kDFrVFVvfcbwy4YHXBsvBKaEpS9Ro6sm4RvW4of6Yh5lkDee4F4uJNodt7MQDoK6LuhSswj9aKOm1aZUznOp6l1/K5sgoRUi05FBDb3t6r3y9y3J84EOZFEkcDWnfJLoKHT+Xr+BQ2R3SsAvFfggnDGh1U0hdQ2VFxpu2i/AoGAMEkLr/0PkP7q2NhYUAl47f+vk1cYetzkXGm8hEWAh2BDS/UDjDKUBuVhoLUD6ETeJfAkOz9QSEB492w6kA3KiNERiD9b0y/lwLhl1iqAQk2yU0jcL2gu2hrGRfLGzsrOmRox3PRMn5dybvDrpSiJm0mQDH3xb1aaatOHNj217zo=
+  alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo8fS2G18IO0x3ejVEQtgFjyk6BlqGYW68wgDzT0Iv4SkDZvsOzgnKvBuHWcdZGAeeb0dgh+wdFrptAN/XNp01noSkoWGd03YgYFC14AZHhdbHp622fKUpbsgFkcin7eMvBcHiEZ1Fbhht6tqBAdQlAckJF4qiYrao0/DbK0A+oHiNjZLpAQy7JfNCkdkAOTS88PxeEsgP12Dkji+k9Dzkmn50x1pwUO/I3X2DBRK6RZJfW9bfiRlyTiSvvvUxdVMxwlxWdFxWI2itywQq579MPe3ioIDE9XeKSGP4jc+KpHUmZR5UvbgVXkEO0h1htNVbMgZCI2lseTXKPQVnehT2wIDAQAB
+  notify_url: http://67e068g652.zicp.fun:27094/payed/notify
+#  return_url: http://localhost:8083/pay/success.html
+  return_url: http://member.jiangfendou.com/memberOrder.html
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+  sign_type: RSA2
+  charset: utf-8

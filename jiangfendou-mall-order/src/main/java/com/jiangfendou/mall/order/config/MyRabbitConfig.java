@@ -1,6 +1,7 @@
 package com.jiangfendou.mall.order.config;
 
 import javax.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ReturnedMessage;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@Slf4j
 @Configuration
 public class MyRabbitConfig {
 
@@ -38,16 +40,24 @@ public class MyRabbitConfig {
     @PostConstruct
     public void initRabbitTemplate() {
         rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback() {
+
             /**
-            * 1、只要消息抵达Broker就ack=true
-            * correlationData：当前消息的唯一关联数据(这个是消息的唯一id)
-            * ack：消息是否成功收到
-            * cause：失败的原因
-            */
+             * 1、只要消息抵达Broker就ack=true
+             * correlationData：当前消息的唯一关联数据(这个是消息的唯一id)
+             * ack：消息是否成功收到
+             * cause：失败的原因
+             *
+             * 防止消息丢失
+             * 做好消息确认机制（publisher、consumer【手动ack】）
+             * 每一个发送的消息都要在数据库记录，定期将这些失败的消息在发送一遍
+             *
+             * 防止消息重复
+             *
+             */
             //设置确认回调
             @Override
             public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-                System.out.println("confirm...correlationData["+correlationData+"]==>" +
+                log.info("confirm...correlationData["+correlationData+"]==>" +
                     "ack:["+ack+"]==>cause:["+cause+"]");
             }
         });
