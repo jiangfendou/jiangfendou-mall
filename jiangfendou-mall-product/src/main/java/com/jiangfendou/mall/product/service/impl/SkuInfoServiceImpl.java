@@ -1,13 +1,17 @@
 package com.jiangfendou.mall.product.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
+import com.jiangfendou.common.utils.R;
 import com.jiangfendou.mall.product.config.MyThreadConfig;
 import com.jiangfendou.mall.product.entity.SkuImagesEntity;
 import com.jiangfendou.mall.product.entity.SpuInfoDescEntity;
 import com.jiangfendou.mall.product.entity.SpuInfoEntity;
+import com.jiangfendou.mall.product.feign.SeckillFeignService;
 import com.jiangfendou.mall.product.service.AttrGroupService;
 import com.jiangfendou.mall.product.service.SkuImagesService;
 import com.jiangfendou.mall.product.service.SkuSaleAttrValueService;
 import com.jiangfendou.mall.product.service.SpuInfoDescService;
+import com.jiangfendou.mall.product.vo.SeckillSkuVo;
 import com.jiangfendou.mall.product.vo.SkuItemSaleAttrVo;
 import com.jiangfendou.mall.product.vo.SkuItemVo;
 import com.jiangfendou.mall.product.vo.SpuItemAttrGroupVo;
@@ -53,6 +57,9 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
     @Autowired
     ThreadPoolExecutor executor;
+
+    @Autowired
+    SeckillFeignService seckillFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -140,8 +147,27 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
             skuItemVo.setImages(images);
         }, executor);
 
+        // 当前的sku是否参与秒杀活动
+        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
+            //远程调用查询当前sku是否参与秒杀优惠活动
+            R skuSeckilInfo = seckillFeignService.getSkuSeckilInfo(skuId);
+            if (skuSeckilInfo.getCode() == 0) {
+                //查询成功
+                SeckillSkuVo seckilInfoData = skuSeckilInfo.getData("data", new TypeReference<SeckillSkuVo>() {
+                });
+                skuItemVo.setSeckillSkuVo(seckilInfoData);
+
+                if (seckilInfoData != null) {
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime > seckilInfoData.getEndTime()) {
+                        skuItemVo.setSeckillSkuVo(null);
+                    }
+                }
+            }
+        }, executor);
+
         // 等待所有任务都完成
-        CompletableFuture.allOf(saleAttrFuture, descFuture, attrFuture, imageFuture).get();
+        CompletableFuture.allOf(saleAttrFuture, descFuture, attrFuture, imageFuture, seckillFuture).get();
 
         return skuItemVo;
     }

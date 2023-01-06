@@ -22,6 +22,14 @@ spring:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
+        # ------------- coupon_route
+        - id: coupon_route
+          uri: lb://jiangfendou-mall-coupon
+        # 前端项目，/api
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
         # ------------- member_route
         - id: member_route
           uri: lb://jiangfendou-mall-member
@@ -87,6 +95,11 @@ spring:
           uri: lb://jiangfendou-mall-member
           predicates:
             - Host=member.jiangfendou.com
+        # ------------- nginx seckill
+        - id: mall_seckill_route
+          uri: lb://jiangfendou-mall-seckill
+          predicates:
+            - Host=seckill.jiangfendou.com
   application:
     name: jiangfendou-mall-gateway
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启

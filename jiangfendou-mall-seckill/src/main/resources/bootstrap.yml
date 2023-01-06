@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: jiangfendou-mall-seckill
+  cloud:
+    nacos:
+      config:
+        server-addr: 124.223.77.220:8848
+        # 配置文件后缀名为yaml
+        file-extension: yaml
+        namespace: 7ce30e0c-7359-4b74-9e26-dad9052967ff
+        username: nacos
+        password: nacos
+        extension-configs:
+          - dataId: system_config.yml
+            group: dev
+            refresh: true

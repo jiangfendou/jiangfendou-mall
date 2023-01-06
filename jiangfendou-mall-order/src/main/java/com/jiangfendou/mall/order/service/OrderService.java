@@ -1,6 +1,7 @@
 package com.jiangfendou.mall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jiangfendou.common.to.mq.SeckillOrderTo;
 import com.jiangfendou.common.utils.PageUtils;
 import com.jiangfendou.mall.order.entity.OrderEntity;
 
@@ -40,5 +41,7 @@ public interface OrderService extends IService<OrderEntity> {
     String handlePayResult(PayAsyncVo asyncVo);
 
     String asyncNotify(String notifyData);
+
+    void createSeckillOrder(SeckillOrderTo seckillOrderTo);
 }
 

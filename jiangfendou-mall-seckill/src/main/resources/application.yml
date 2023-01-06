@@ -1,0 +1,71 @@
+server:
+  port: 8091
+  servlet:
+    session:
+      timeout: 30m
+
+spring:
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.223.77.220
+  application:
+    name: jiangfendou-mall-seckill
+  # 异步线程大小
+  task:
+    execution:
+      pool:
+        core-size: 20
+        max-size: 50
+  rabbitmq:
+    host: 124.223.77.220
+    port: 5672
+    virtual-host: /
+    # 开启发送端确认
+    # ·NONE
+    # 禁用发布确认模式，是默认值
+    # ·CORRELATED
+    # 发布消息成功或失败到交换器后会触发回调方法
+    # ·SIMPLE    性能差
+    # 经测试有两种效果，其一效果和CORRELATED值一样会触发回调方法，
+    # 其二在发布消息成功后使用rabbitTemplate调用waitForConfirms或waitForConfirmsOrDie方法
+    # 等待broker节点返回发送结果，根据返回结果来判定下一步的逻辑，要注意的点是
+    # waitForConfirmsOrDie方法如果返回false则会关闭channel，则接下来无法发送消息到broker
+    publisher-confirm-type: correlated
+    # 队列发布确认，失败会回调
+    publisher-returns: true
+    # 只要抵达队列，以异步发送有点回调我们这个return confirm
+    template:
+      mandatory: true
+    # 手动ACK 手动确认收货
+    listener:
+      type: simple
+      simple:
+        acknowledge-mode: manual
+  main:
+    allow-circular-references: true
+  # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
+#  mvc:
+#    servlet:
+#      load-on-startup: 1
+  # 解决springboot2.6因为循环引用导致的启动错误
+#  main:
+#    allow-circular-references: true
+  # redis
+#  redis:
+#    host: 124.223.77.220
+#    port: 6379
+#    password: 123456
+  # 关闭thymeleaf的缓存
+#  thymeleaf:
+#    cache: false
+#  session:
+#    store-type: redis
+
+#配置线程池
+#jiangfendou:
+#  thread:
+#    coreSize: 20
+#    maxSize: 200
+#    keepAliveTime: 10

@@ -23,5 +23,6 @@
         <module>jiangfendou-mall-search</module>
         <module>jiangfendou-mall-auth-server</module>
         <module>jiangfendou-mall-cart</module>
+        <module>jiangfendou-mall-seckill</module>
     </modules>
 </project>
