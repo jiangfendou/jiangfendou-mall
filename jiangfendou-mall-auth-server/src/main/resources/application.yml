@@ -10,6 +10,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
   application:
     name: jiangfendou-mall-auth-server
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
@@ -29,3 +33,12 @@ spring:
     cache: false
   session:
     store-type: redis
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+# 开启sentinel对feign的熔断机制
+feign:
+  sentinel:
+    enabled: true

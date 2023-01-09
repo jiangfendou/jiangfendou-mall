@@ -21,7 +21,9 @@ public enum BaseCodeEnum {
 
     NO_STOCK_EXCEPTION(1007,"商品库存不足"),
 
-    LOGINACCT_PASSWORD_EXCEPTION(1008,"账号或密码错误");
+    LOGINACCT_PASSWORD_EXCEPTION(1008,"账号或密码错误"),
+
+    TO_MANY_REQUEST(10002,"请求流量过大，请稍后再试");
 
     private int code;
 

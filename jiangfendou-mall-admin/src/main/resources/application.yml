@@ -16,6 +16,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
   # 环境 dev|test|prod
 #  profiles:
 #    active: dev
@@ -82,3 +86,8 @@ renren:
     # token有效时长，7天，单位秒
     expire: 604800
     header: token
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

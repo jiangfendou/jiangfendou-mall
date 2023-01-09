@@ -12,6 +12,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
     gateway:
       routes:
         # ------------- product_route
@@ -106,6 +110,11 @@ spring:
   mvc:
     servlet:
       load-on-startup: 1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**/*/xml
 #  # 主键自增

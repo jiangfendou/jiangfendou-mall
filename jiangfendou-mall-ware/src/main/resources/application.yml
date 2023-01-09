@@ -13,6 +13,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
   application:
     name: jiangfendou-mall-ware
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
@@ -49,6 +53,11 @@ spring:
       type: simple
       simple:
         acknowledge-mode: manual
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**/*/xml
 #  #主键自增
@@ -83,3 +92,7 @@ seata:
       my_test_tx_group: default #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
       #注意：此处的my_test_tx_group需要和上面seata.tx-service-group以及config.txt中的配置对应
 
+# 开启sentinel对feign的熔断机制
+feign:
+  sentinel:
+    enabled: true

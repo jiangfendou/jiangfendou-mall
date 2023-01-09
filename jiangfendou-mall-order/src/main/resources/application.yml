@@ -13,6 +13,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
   application:
     name: jiangfendou-mall-order
   # 初始化dispatcherServlet，默认-1未开启，0及以上为开启
@@ -61,6 +65,11 @@ spring:
   mvc:
     format:
       date: yyyy-MM-dd HH:mm:ss
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 #mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**.xml
@@ -131,3 +140,8 @@ alipay:
   gatewayUrl: https://openapi.alipaydev.com/gateway.do
   sign_type: RSA2
   charset: utf-8
+
+# 开启sentinel对feign的熔断机制
+feign:
+  sentinel:
+    enabled: true

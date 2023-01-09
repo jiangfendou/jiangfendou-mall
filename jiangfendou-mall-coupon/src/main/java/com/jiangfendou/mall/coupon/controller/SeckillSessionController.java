@@ -37,8 +37,7 @@ public class SeckillSessionController {
      * @return
      */
     @GetMapping(value = "/Lates3DaySession")
-    public R getLates3DaySession() {
-
+    public R getLates3DaySession() throws InterruptedException {
         List<SeckillSessionEntity> seckillSessionEntities = seckillSessionService.getLates3DaySession();
 
         return R.ok().setData(seckillSessionEntities);

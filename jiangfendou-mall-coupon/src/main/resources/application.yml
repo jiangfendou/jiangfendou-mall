@@ -1,5 +1,5 @@
-#server:
-#  port: 8081
+server:
+  port: 8081
 
 spring:
 #  datasource:
@@ -13,6 +13,10 @@ spring:
     nacos:
       discovery:
         server-addr: 124.223.77.220
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
   application:
     name: jiangfendou-mall-coupon
     # 解决springboot2.6因为循环引用导致的启动错误
@@ -58,4 +62,13 @@ seata:
     vgroup-mapping:
       my_test_tx_group: default #此处的配置来源于上述步骤中config.txt中的service.vgroupMapping.my_test_tx_group=default
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
+# 开启sentinel对feign的熔断机制
+feign:
+  sentinel:
+    enabled: true

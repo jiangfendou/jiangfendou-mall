@@ -1,5 +1,6 @@
 package com.jiangfendou.mall.coupon.service.impl;
 
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.jiangfendou.mall.coupon.entity.SeckillSkuRelationEntity;
 import com.jiangfendou.mall.coupon.service.SeckillSkuRelationService;
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ import com.jiangfendou.mall.coupon.dao.SeckillSessionDao;
 import com.jiangfendou.mall.coupon.entity.SeckillSessionEntity;
 import com.jiangfendou.mall.coupon.service.SeckillSessionService;
 
-
+@Slf4j
 @Service("seckillSessionService")
 public class SeckillSessionServiceImpl extends ServiceImpl<SeckillSessionDao, SeckillSessionEntity>
     implements SeckillSessionService {

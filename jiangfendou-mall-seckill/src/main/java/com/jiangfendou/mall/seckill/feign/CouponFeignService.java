@@ -1,11 +1,12 @@
 package com.jiangfendou.mall.seckill.feign;
 
 import com.jiangfendou.common.utils.R;
+import com.jiangfendou.mall.seckill.fallback.CouponFeignServiceFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-@FeignClient("jiangfendou-mall-coupon")
+@FeignClient(value = "jiangfendou-mall-coupon", fallback = CouponFeignServiceFallBack.class)
 public interface CouponFeignService {
 
     /**
