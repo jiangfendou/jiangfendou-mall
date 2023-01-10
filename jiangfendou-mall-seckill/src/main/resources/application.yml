@@ -14,8 +14,34 @@ spring:
       transport:
         port: 8719
         dashboard: localhost:8080
+      datasource:
+        flow-ds:
+          nacos:
+            server-addr: 124.223.77.220:8848
+            dataId: flow-server
+            groupId: dev
+            ruleType: flow # flow代表流程控制，degrade代表熔断规则
+            username: nacos
+            password: nacos
+        grade-ds: #sentinel从nacos获取指定的熔断规则 这个名字可以自定义，不重复就可以
+          nacos:
+            server-addr: 124.223.77.220:8848
+            dataId: degrade-server
+            groupId: dev
+            ruleType: degrade # flow代表流程控制，degrade代表熔断规则
+            username: nacos
+            password: nacos
   application:
     name: jiangfendou-mall-seckill
+  zipkin:
+    base-url: http://124.223.77.220:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+  # 设置抽样采集率100%，默认0.1，即10%
+  sleuth:
+    sampler:
+      probability: 1
   # 异步线程大小
   task:
     execution:
@@ -83,3 +109,8 @@ management:
 feign:
   sentinel:
     enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
+    org.springframework.cloud.sleuth: debug

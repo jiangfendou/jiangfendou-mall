@@ -43,17 +43,26 @@
             <version>2.1.5.RELEASE</version>
         </dependency>
 
+        <!-- 使用nacos作为sentinel持久化数据源 -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-<!--            <version>2.1.0.RELEASE</version>-->
-<!--            <version>2.0.4.RELEASE</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+        <!--        </dependency>-->
 
         <!-- 整合spring session 完成session 共享问题 -->
         <dependency>
@@ -103,6 +112,16 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-web-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+            <version>0.44</version>
         </dependency>
     </dependencies>
 

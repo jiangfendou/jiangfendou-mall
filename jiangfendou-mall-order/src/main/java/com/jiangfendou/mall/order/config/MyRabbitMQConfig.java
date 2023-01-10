@@ -114,7 +114,7 @@ public class MyRabbitMQConfig {
      * @return
      */
     @Bean
-    public Queue orderSecKillOrrderQueue() {
+    public Queue orderSecKillOrderQueue() {
         Queue queue = new Queue("order.seckill.order.queue", true, false, false);
         return queue;
     }

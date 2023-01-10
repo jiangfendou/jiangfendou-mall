@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  *
  * */
 @Slf4j
-@Component
+//@Component
 @Service
 public class SeckillScheduled {
 
@@ -29,7 +29,7 @@ public class SeckillScheduled {
     /** 秒杀商品上架功能的锁 */
     private static final String UPLOAD_LOCK = "seckill:upload:lock";
 
-    @Scheduled(cron = "*/1 * * * * ?")
+//    @Scheduled(cron = "*/1 * * * * ?")
     public void uploadSeckillSkuLatest3Days() {
         // 分布式锁
         RLock lock = redissonClient.getLock(UPLOAD_LOCK);

@@ -19,6 +19,15 @@ spring:
         dashboard: localhost:8080
   application:
     name: jiangfendou-mall-coupon
+  zipkin:
+    base-url: http://124.223.77.220:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+  # 设置抽样采集率100%，默认0.1，即10%
+  sleuth:
+    sampler:
+      probability: 1
     # 解决springboot2.6因为循环引用导致的启动错误
   main:
     allow-circular-references: true

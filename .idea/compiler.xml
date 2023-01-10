@@ -10,14 +10,14 @@
         <module name="jiangfendou-mall-auth-server" />
         <module name="jiangfendou-mall-coupon" />
         <module name="jiangfendou-mall-gateway" />
-        <module name="jiangfendou-mall-search" />
         <module name="jiangfendou-mall-common" />
+        <module name="jiangfendou-mall-search" />
         <module name="jiangfendou-mall-order" />
         <module name="jiangfendou-mall-product" />
         <module name="jiangfendou-mall-cart" />
         <module name="jiangfendou-mall-third-part" />
-        <module name="jiangfendou-mall-member" />
         <module name="jiangfendou-mall-generator" />
+        <module name="jiangfendou-mall-member" />
         <module name="jiangfendou-mall-seckill" />
         <module name="jiangfendou-mall-admin" />
         <module name="jiangfendou-mall-ware" />
